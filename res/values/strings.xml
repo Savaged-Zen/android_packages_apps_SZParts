@@ -18,7 +18,7 @@
 */
 -->
 <resources>
-    <string name="app_label">Evervolv Settings</string>
+    <string name="app_label">Savaged-Zen Settings</string>
 
     <string name="device_info_title">Device info</string>
     
@@ -75,7 +75,7 @@
     <string name="select_farright_button">Select far right action button.</string>
     <string name="title_general_use_stock_launcher">Use Stock Launcher Layout</string>
     <string name="summary_on_general_use_stock_launcher">Stock launcher layout will be used.</string>
-    <string name="summary_off_general_use_stock_launcher">Evervolv Launcher layout will be used.</string>	
+    <string name="summary_off_general_use_stock_launcher">Savaged-Zen Launcher layout will be used.</string>	
 
     <string name="group_applications">Applications</string>
 

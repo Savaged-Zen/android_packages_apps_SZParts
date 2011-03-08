@@ -5,7 +5,7 @@
 		android:title="Lockscreen Carrier Caption"
 		android:summary="Change the lockscreen carrier caption."
 		android:dialogTitle="Enter lockscreen caption."
-		android:defaultValue="Evervolv" 
+		android:defaultValue="Savaged-Zen" 
 	/>
 
 	<CheckBoxPreference

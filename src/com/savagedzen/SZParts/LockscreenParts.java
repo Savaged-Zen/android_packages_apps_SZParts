@@ -1,8 +1,8 @@
-package com.evervolv.EVParts;
+package com.savagedzen.SZParts;
 
 
-import com.evervolv.EVParts.R;
-import com.evervolv.EVParts.R.xml;
+import com.savagedzen.SZParts.R;
+import com.savagedzen.SZParts.R.xml;
 
 import android.app.ActivityManager;
 import android.content.Context;

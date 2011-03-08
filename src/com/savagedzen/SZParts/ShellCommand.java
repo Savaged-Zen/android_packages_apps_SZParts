@@ -1,4 +1,4 @@
-package com.evervolv.EVParts;
+package com.savagedzen.SZParts;
 
 /**
  * ShellCommand.java runs commands as if in a native shell instance, and can return stdio.

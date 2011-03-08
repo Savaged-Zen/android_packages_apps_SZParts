@@ -15,7 +15,7 @@
 ** limitations under the License.
 */
 
-package com.evervolv.EVParts;
+package com.savagedzen.SZParts;
 
 import android.content.SharedPreferences;
 import android.preference.Preference;
@@ -25,7 +25,7 @@ import android.os.Bundle;
 public class SpareParts extends PreferenceActivity
         implements Preference.OnPreferenceChangeListener,
         SharedPreferences.OnSharedPreferenceChangeListener {
-    private static final String TAG = "EVParts";
+    private static final String TAG = "SZParts";
 
     
     @Override
