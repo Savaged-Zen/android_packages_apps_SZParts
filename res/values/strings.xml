@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/common/assets/res/any/strings.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+    <string name="app_label">Evervolv Settings</string>
+
+    <string name="device_info_title">Device info</string>
+    
+    <string name="title_battery_history">Battery history</string>
+    <string name="summary_battery_history">Summary of how battery has been used</string>
+    
+    <string name="title_battery_information">Battery information</string>
+    <string name="summary_battery_information">Current battery status information</string>
+    
+    <string name="title_usage_statistics">Usage statistics</string>
+    <string name="summary_usage_statistics">Summary of application usage</string>
+    
+    <string name="general_title">General</string>
+    
+    <string name="title_window_animations">Window animations</string>
+    <string name="summary_window_animations">Speed of animations in individual windows</string>
+    <string name="dialog_title_window_animations">Select window speed</string>
+    
+    <string name="title_transition_animations">Transition animations</string>
+    <string name="summary_transition_animations">Speed of animations moving between screens</string>
+    <string name="dialog_title_transition_animations">Select transition speed</string>
+    
+    <string name="title_fancy_ime_animations">Fancy input animations</string>
+    <string name="summary_on_fancy_ime_animations">Use fancier animations for input method windows</string>
+    <string name="summary_off_fancy_ime_animations">Use normal animations for input method windows</string>
+    
+    <string name="title_haptic_feedback">Haptic feedback</string>
+    <string name="summary_on_haptic_feedback">Use haptic feedback with user interaction</string>
+    <string name="summary_off_haptic_feedback">Use haptic feedback with user interaction</string>
+    
+    <string name="title_font_size">Font size</string>
+    <string name="summary_font_size">Overall size of fonts</string>
+    <string name="dialog_title_font_size">Select font size</string>
+    
+    <string name="title_end_button">End button behavior</string>
+    <string name="summary_end_button">Select End (red) button action</string>
+    <string name="dialog_title_end_button">Select End button</string>
+    
+    <string name="applications_title">Applications</string>
+    
+    <!-- Sound & display settings screen, compatibility mode check box label -->
+    <string name="compatibility_mode_title">Compatibility Mode</string>
+    <!-- Sound & display settings screen, compatibility mode option summary text when check box is selected -->
+    <string name="compatibility_mode_summary_on">Run older apps in Compatibility mode. This require rebooting. </string>
+    <!-- Sound & display settings screen, compatibility mode option summary text when check box is clear -->
+    <string name="compatibility_mode_summary_off">Run older apps in Compatibility mode. This require rebooting. </string>
+
+    <!-- New Settings strings added for Evervolv Customization -->
+    <string name="custom_settings">Customizable Settings</string>
+
+    <!-- Launcher -->
+    <string name="settings_launcher">Launcher Settings</string>
+    <string name="settings_launcher_summary">Customize your launcher</string>
+    <string name="select_farright_button">Select far right action button.</string>
+    <string name="title_general_use_stock_launcher">Use Stock Launcher Layout</string>
+    <string name="summary_on_general_use_stock_launcher">Stock launcher layout will be used.</string>
+    <string name="summary_off_general_use_stock_launcher">Evervolv Launcher layout will be used.</string>	
+
+    <string name="group_applications">Applications</string>
+
+    <!-- Lockscreen -->
+    <string name="settings_lockscreen">Lockscreen Settings</string>
+    <string name="settings_lockscreen_summary">Customize your lockscreen</string>
+    <string name="title_general_use_rotary_lockscreen">Use Rotary Lockscreen?</string>
+    <string name="summary_on_general_use_rotary_lockscreen">Rotary lockscreen will be used</string>
+    <string name="summary_off_general_use_rotary_lockscreen">Rotary lockscreen will not be used</string>
+
+    <!-- UiOptions -->
+    <string name="settings_uioptions">Ui Settings</string>
+    <string name="settings_uioptions_summary">Customize your Ui</string>
+
+    <string name="ui_category_general_title">General</string>
+    <string name="ui_category_statusbar_title">Statusbar</string>
+
+    <string name="title_use_screenon_anim">Use Screen On Animation?</string>
+    <string name="summary_on_use_screenon_anim">Screen On Animation will be used</string>
+    <string name="summary_off_use_screenon_anim">Screen On Animation will not be used</string>
+
+    <string name="title_use_screenoff_anim">Use Screen Off Animation?</string>
+    <string name="summary_on_use_screenoff_anim">Screen Off Animation will be used</string>
+    <string name="summary_off_use_screenoff_anim">Screen Off Animation will not be used</string>
+
+    <string name="battery_option_dialog_title">Battery</string>
+    <string name="battery_option_title">Battery type</string>
+    <string name="battery_option_summary">Choose the battery type to use (Requires reboot)</string>
+
+    <string name="clock_title">Clock</string>
+    <string name="title_show_clock">Show clock</string>
+    <string name="title_clock_color">Clock color</string>
+    <string name="hide_clock_title">Hide the clock</string>
+    <string name="hide_clock_on"> Clock is hidden</string>
+    <string name="hide_clock_off"> Clock is visible</string>
+    <string name="hide_ampm_title">Hide AM/PM in clock</string>
+    <string name="hide_ampm_on"> AM/PM is hidden</string>
+    <string name="hide_ampm_off"> AM/PM is visible</string>
+
+
+    <string name="settings_statusbar_options">Statusbar settings</string>
+    <string name="settings_statusbar_options_summary">Customize your statusbar</string>
+
+    <string name="title_statusbar_transparent_background">Statusbar transparency</string>
+    <string name="summary_on_statusbar_transparent_background">Transparent statusbar will be used</string>
+    <string name="summary_off_statusbar_transparent_background">Transparent statusbar will not be used</string>
+
+</resources>
