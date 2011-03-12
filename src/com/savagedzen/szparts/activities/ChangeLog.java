@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -36,7 +36,7 @@ import com.android.internal.app.AlertController;
 
 public class ChangeLog extends AlertActivity {
 
-    private static final String CHANGELOG_PATH = "/system/etc/CHANGELOG-CM.txt";
+    private static final String CHANGELOG_PATH = "/system/etc/CHANGELOG-SZ.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

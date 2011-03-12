@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 import android.app.ListActivity;
 import android.content.Context;

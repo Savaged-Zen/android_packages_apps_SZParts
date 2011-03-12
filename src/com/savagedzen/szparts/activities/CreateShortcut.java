@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
 import android.app.LauncherActivity;
 import android.content.Intent;
@@ -27,7 +27,7 @@ public class CreateShortcut extends LauncherActivity {
     @Override
     protected Intent getTargetIntent() {
         Intent targetIntent = new Intent(Intent.ACTION_MAIN, null);
-        targetIntent.addCategory("com.cyanogenmod.cmparts.SHORTCUT");
+        targetIntent.addCategory("com.savagedzen.szparts.SHORTCUT");
         targetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return targetIntent;
     }
