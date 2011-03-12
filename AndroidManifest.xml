@@ -93,8 +93,6 @@
                 <category android:name="com.savagedzen.szparts.SHORTCUT" />
             </intent-filter>
         </activity>
-        </activity>
-        </activity>
         <activity android:name=".activities.CPUActivity"
             android:label="@string/cpu_settings_title">
             <intent-filter>
