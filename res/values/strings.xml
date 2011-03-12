@@ -75,6 +75,56 @@
     <string name="pref_lockscreen_timeout_lock_delay_summary">How long to delay before enabling screen lock when screen times out</string>
     <string name="pref_lockscreen_screenoff_lock_delay_summary">How long to delay before enabling screen lock when screen is turned off</string>
 
+    <!-- Color Picker -->
+    <string name="title_color_picker">Pick a color</string>
+    <string name="msg_color_picker">Tap on center color to confirm.\nPress back to cancel</string>
+
+    <!-- User interface: LED notifcations -->
+    <string name="trackball_notifications_title">LED notification colors</string>
+    <string name="dialog_color_trackball">Choose a color</string>
+    <string name="dialog_blink_trackball">Choose a blink rate</string>
+    <string name="color_trackball_flash_title">Flash color</string>
+    <string name="color_trackball_flash_summary">Color to flash</string>
+    <string name="color_trackball_custom_title">Custom color</string>
+    <string name="color_trackball_custom_summary">Custom color to flash</string>
+    <string name="color_trackball_blink_title">Blink rate</string>
+    <string name="color_trackball_blink_summary">Blink rate</string>
+    <string name="color_trackball_test_title">Flash test</string>
+    <string name="color_trackball_test_summary">Test the flash</string>
+    <string name="dialog_clear_flash">Clear Flash</string>
+    <string name="trackball_advanced_title">Advanced</string>
+    <string name="pref_trackball_screen_title">Always pulse</string>
+    <string name="pref_trackball_screen_summary">LED will pulse while screen is on</string>
+    <string name="pref_trackball_blend_title">Blend notifications</string>
+    <string name="pref_trackball_blend_summary">Blend notification colors. Overrides succession.</string>
+    <string name="pref_trackball_sucess_title">Succession</string>
+    <string name="pref_trackball_sucess_summary">Pulse notifications in succession.</string>
+    <string name="pref_trackball_random_title">Random colors</string>
+    <string name="pref_trackball_random_summary">Pulses the LED in random colors for all notifications</string>
+    <string name="pref_trackball_order_title">Pulse in order</string>
+    <string name="pref_trackball_order_summary">Pulses the LED color in order</string>
+    <string name="pref_trackball_reset_title">Reset</string>
+    <string name="pref_trackball_reset_summary">Reset all colors and apps</string>
+    <string name="dialog_trackball_loading">Loading...</string>
+    <string name="dialog_trackball_packagelist">Loading package list</string>
+    <string name="trackball_category_dialog_text">Please enter a new category</string>
+    <string name="trackball_category_list_title">Category</string>
+    <string name="trackball_category_list_summary">Choose a category</string>
+    <string name="trackball_category_screen">Manage categories</string>
+    <string name="trackball_category_add_title">Add category</string>
+    <string name="trackball_category_add_summary">Add a category to the list</string>
+    <string name="trackball_category_remove_title">Remove category</string>
+    <string name="trackball_category_remove_summary">Remove a category from the list</string>
+    <string name="trackball_remove_default_toast">Can\'t remove this category as its the default one.</string>
+    <string name="trackball_reset_all">Reset all colors and categories.</string>
+    <string name="trackball_array_error">Unfortunately there was an array error. This package has been forced into the Miscellaneous category.</string>
+    <string name="trackball_color_notice_title">NOTE:</string>
+    <string name="trackball_color_notice_summary">Not all colors will display on all devices.</string>
+
+    <!-- Trackball Settings : Warning dialog -->
+    <string name="notification_battery_warning_title">WARNING: May cause battery drain</string>
+    <string name="notification_battery_warning">This option has been proven to increase the amount of battery drain by ~3% per hour. If you notice an increase in drain during trackball lights pulsing then this option is why. Do not enable if you don\'t wish to incur the drain.</string>
+
     <!-- Lockscreen Overview -->
     <string name="pref_lockscreen_stylecfg_title">Style options</string>
     <string name="pref_lockscreen_stylecfg_summary">Configure the lockscreen style and the corresponding settings</string>
@@ -250,6 +300,16 @@
     <!-- UI Settings : Power off prompt -->
     <string name="pref_power_prompt_title">Power prompt</string>
     <string name="pref_power_prompt_summary">Change whether there is a prompt after choosing shutdown or reboot</string>
+
+    <!-- UI Settings : Render effect -->
+    <string name="pref_render_effect_title">Render effect</string>
+    <string name="pref_render_effect_summary">Change what colors are used to draw the screen (potential battery savings)</string>
+
+    <string name="widget_name">RenderFX Widget</string>
+    <string name="renderfx_temp">RenderFX</string>
+    <string name="prefs_render_effect">Render Effect</string>
+    <string name="notify_render_effect">Render effect on</string>
+        <string name="add_widget">Add widget</string>
 
     <!--  Widget Types -->
     <string name="night">Night</string>

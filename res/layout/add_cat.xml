@@ -5,8 +5,7 @@
     android:orientation = "vertical">
         <TextView 
             android:layout_width = "fill_parent" 
-            android:layout_height = "wrap_content" 
-            android:text = "@string/trackball_category_dialog_text" 
+            android:layout_height = "wrap_content"          
             android:textStyle = "bold" /> 
         <EditText 
             android:id = "@+id/cat_text" 
