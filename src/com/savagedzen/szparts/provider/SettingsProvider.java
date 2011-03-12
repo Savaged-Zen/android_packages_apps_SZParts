@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.provider;
+package com.savagedzen.szparts.provider;
 
 import java.util.ArrayList;
 
@@ -33,7 +33,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 public class SettingsProvider extends ContentProvider {
-    public static final String AUTHORITY = "com.cyanogenmod.cmparts.provider.Settings";
+    public static final String AUTHORITY = "com.savagedzen.szparts.provider.Settings";
     public static final String TABLE_NAME = "settings";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
 
@@ -201,8 +201,8 @@ public class SettingsProvider extends ContentProvider {
         private Constants() {
         }
 
-        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.cyanogenmod.settings";
-        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.cyanogenmod.settings";
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.savagedzen.settings";
+        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.savagedzen.settings";
         public static final String DEFAULT_SORT_ORDER = Constants._ID + " ASC";
 
         public static final String _ID = "_id";

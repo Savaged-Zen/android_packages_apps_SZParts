@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.provider;
+package com.savagedzen.szparts.provider;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

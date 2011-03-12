@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.utils;
+package com.savagedzen.szparts.utils;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 import android.content.Context;
 import android.provider.Settings;

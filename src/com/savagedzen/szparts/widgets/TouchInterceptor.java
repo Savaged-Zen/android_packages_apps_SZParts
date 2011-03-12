@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.widgets;
+package com.savagedzen.szparts.widgets;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 import android.content.Context;
 import android.content.res.Resources;
