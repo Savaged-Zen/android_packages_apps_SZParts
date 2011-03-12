@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -27,6 +27,6 @@ public class MainActivity extends PreferenceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.cmparts);
+        addPreferencesFromResource(R.xml.szparts);
     }
 }

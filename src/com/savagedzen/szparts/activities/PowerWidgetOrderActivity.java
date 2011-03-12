@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
-import com.cyanogenmod.cmparts.R;
-import com.cyanogenmod.cmparts.utils.PowerWidgetUtil;
-import com.cyanogenmod.cmparts.widgets.TouchInterceptor;
+import com.savagedzen.szparts.R;
+import com.savagedzen.szparts.utils.PowerWidgetUtil;
+import com.savagedzen.szparts.widgets.TouchInterceptor;
 
 import android.app.ListActivity;
 import android.content.Context;

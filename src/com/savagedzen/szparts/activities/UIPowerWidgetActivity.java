@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
@@ -24,7 +24,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 public class UIPowerWidgetActivity extends PreferenceActivity {
 

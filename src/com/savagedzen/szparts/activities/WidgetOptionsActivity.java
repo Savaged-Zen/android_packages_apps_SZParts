@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
-import com.cyanogenmod.cmparts.R;
-import com.cyanogenmod.cmparts.provider.RenderFXWidgetProvider;
+import com.savagedzen.szparts.R;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -55,24 +54,12 @@ public class WidgetOptionsActivity extends PreferenceActivity implements OnPrefe
                     AppWidgetManager.INVALID_APPWIDGET_ID);
         }
 
-        mRenderFxPref = (ListPreference) findPreference("widget_render_effect");
-        mRenderFxPref.setSummary(mRenderFxPref.getEntry());
-        mRenderFxPref.setOnPreferenceChangeListener(this);
-
         Preference mSave = findPreference("save_settings");
         mSave.setOnPreferenceClickListener(savePrefListener);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mRenderFxPref) {
-            if (newValue != null) {
-                int index = mRenderFxPref.findIndexOfValue(newValue.toString());
-                Editor editor = mPreferences.edit();
-                editor.putString("widget_render_effect", newValue.toString());
-                editor.commit();
-                mRenderFxPref.setSummary(mRenderFxPref.getEntries()[index]);
-            }
-        }
+	}
         return false;
     }
 
@@ -81,40 +68,16 @@ public class WidgetOptionsActivity extends PreferenceActivity implements OnPrefe
         @Override
         public boolean onPreferenceClick(Preference preference) {
             Editor editor = mPreferences.edit();
-            editor.putInt("widget_render_effect_" + mAppWidgetId,
-                    Integer.parseInt(mPreferences.getString("widget_render_effect", "1")));
-            editor.commit();
+                    editor.commit();
 
             Context context = getApplicationContext();
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
             Intent launchIntent = new Intent();
-            launchIntent.setClass(context, RenderFXWidgetProvider.class);
             launchIntent.addCategory(Intent.CATEGORY_ALTERNATIVE);
             launchIntent.setData(Uri.parse("custom:" + mAppWidgetId + "/0"));
             PendingIntent pi = PendingIntent.getBroadcast(context, 0, launchIntent, 0);
             views.setOnClickPendingIntent(R.id.btn, pi);
-            int renderFx = mPreferences.getInt("widget_render_effect_" + mAppWidgetId, 1);
-            switch (renderFx) {
-            case 1:
-                views.setTextViewText(R.id.ind, context.getResources().getString(R.string.night));
-                break;
-            case 2:
-                views.setTextViewText(R.id.ind, context.getResources().getString(R.string.terminal));
-                break;
-            case 3:
-                views.setTextViewText(R.id.ind, context.getResources().getString(R.string.blue));
-                break;
-            case 4:
-                views.setTextViewText(R.id.ind, context.getResources().getString(R.string.amber));
-                break;
-            case 5:
-                views.setTextViewText(R.id.ind, context.getResources().getString(R.string.salmon));
-                break;
-            case 6:
-                views.setTextViewText(R.id.ind, context.getResources().getString(R.string.fuscia));
-                break;
-            default:
-                views.setTextViewText(R.id.ind,
+                  views.setTextViewText(R.id.ind,
                         context.getResources().getString(R.string.renderfx_temp));
             }
             final AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);

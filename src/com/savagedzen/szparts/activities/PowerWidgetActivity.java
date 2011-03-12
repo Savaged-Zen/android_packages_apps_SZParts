@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
 import com.android.internal.telephony.Phone;
 import com.android.wimax.WimaxConstants;
-import com.cyanogenmod.cmparts.R;
-import com.cyanogenmod.cmparts.utils.PowerWidgetUtil;
+import com.savagedzen.szparts.R;
+import com.savagedzen.szparts.utils.PowerWidgetUtil;
 
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;

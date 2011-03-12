@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
+package com.savagedzen.szparts.activities;
 
 import android.os.Bundle;
 import android.os.IBinder;
@@ -30,7 +30,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 public class UIActivity extends PreferenceActivity implements OnPreferenceChangeListener {
 
