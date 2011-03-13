@@ -16,11 +16,13 @@
 
 package com.savagedzen.szparts.activities;
 
+import com.savagedzen.szparts.R;
+
 import android.app.LauncherActivity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ListView;
-import com.cyanogenmod.cmparts.R;
+
 
 public class CreateShortcut extends LauncherActivity {
     

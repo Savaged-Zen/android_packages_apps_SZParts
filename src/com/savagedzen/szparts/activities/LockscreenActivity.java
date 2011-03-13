@@ -16,10 +16,10 @@
 
 package com.savagedzen.szparts.activities;
 
+import com.savagedzen.szparts.R;
+
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-
-import com.cyanogenmod.cmparts.R;
 
 public class LockscreenActivity extends PreferenceActivity {
 

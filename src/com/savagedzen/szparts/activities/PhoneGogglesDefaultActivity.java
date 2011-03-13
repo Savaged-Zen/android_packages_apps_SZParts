@@ -16,13 +16,13 @@
 
 package com.cyanogenmod.cmparts.activities;
 
+import com.savagedzen.szparts.R;
+
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
-
-import com.cyanogenmod.cmparts.R;
 
 public class PhoneGogglesDefaultActivity
 extends PhoneGogglesAbstractActivity

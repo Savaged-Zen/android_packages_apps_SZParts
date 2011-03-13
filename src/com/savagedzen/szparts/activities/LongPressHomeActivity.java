@@ -16,7 +16,7 @@
 
 package com.cyanogenmod.cmparts.activities;
 
-import com.cyanogenmod.cmparts.R;
+import com.savagedzen.szparts.R;
 
 import android.content.Intent;
 import android.content.Intent.ShortcutIconResource;

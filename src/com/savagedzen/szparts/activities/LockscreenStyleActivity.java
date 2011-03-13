@@ -16,6 +16,8 @@
 
 package com.savagedzen.szparts.activities;
 
+import com.savagedzen.szparts.R;
+
 import java.util.ArrayList;
 
 import android.content.Intent;
@@ -28,8 +30,6 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-
-import com.cyanogenmod.cmparts.R;
 
 public class LockscreenStyleActivity extends PreferenceActivity implements
         OnPreferenceChangeListener {
