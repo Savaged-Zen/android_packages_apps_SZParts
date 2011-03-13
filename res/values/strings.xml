@@ -489,6 +489,14 @@
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
 
+    <!-- Credits strings -->
+    <string name="credits_title">View credits</string>
+    <string name="credits_dialog">Credits</string>
+    <string name="credits_loading">Loading credits...</string>
+    <string name="credits_error">Error loading credits...</string>
+    <string name="credite_unknown">Unknown</string>
+    <string name="credits_version">Version</string>
+
     <!-- Phone goggles -->
     <string name="category_phone_goggles_period">Period</string>
     <string name="category_phone_goggles_confirmation">Confirmation</string>
