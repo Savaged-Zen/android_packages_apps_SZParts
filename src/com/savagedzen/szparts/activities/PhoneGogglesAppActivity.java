@@ -16,14 +16,14 @@
 
 package com.savagedzen.szparts.activities;
 
-import com.savagedzen.szparts.R;
-
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+
+import com.savagedzen.szparts.R;
 
 public class PhoneGogglesAppActivity
 extends PhoneGogglesAbstractActivity {

@@ -16,13 +16,11 @@
 
 package com.savagedzen.szparts.activities;
 
-import com.savagedzen.szparts.R;
-
 import android.app.LauncherActivity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ListView;
-
+import com.savagedzen.szparts.R;
 
 public class CreateShortcut extends LauncherActivity {
     
@@ -40,7 +38,7 @@ public class CreateShortcut extends LauncherActivity {
         shortcutIntent.setFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         Intent intent = new Intent();
         intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-                Intent.ShortcutIconResource.fromContext(this, R.drawable.cm_icon));
+                Intent.ShortcutIconResource.fromContext(this, R.drawable.sz_icon));
         intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
         intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, itemForPosition(position).label);
         setResult(RESULT_OK, intent);

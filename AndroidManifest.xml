@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.savagedzon.szparts" android:sharedUserId="android.uid.system">
+    package="com.savagedzen.szparts" android:sharedUserId="android.uid.system">
 
     <uses-sdk android:minSdkVersion="8" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -31,115 +31,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.UIActivity"
-            android:label="@string/ui_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.UIPowerWidgetActivity"
-            android:label="@string/title_expanded_widget">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.UIStatusBarActivity"
-            android:label="@string/ui_status_bar_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.LockscreenActivity"
-            android:label="@string/lockscreen_settings_title_head">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.LockscreenStyleActivity" android:label="@string/pref_lockscreen_stylecfg_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.savagedzen.szparts.SHORTCUT"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.LockscreenWidgetsActivity"
-            android:label="@string/pref_lockscreen_widgets_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.cszparts.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.LockscreenUnlockActivity"
-            android:label="@string/pref_lockscreen_unlock_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.LockscreenTimeoutActivity"
-            android:label="@string/pref_lockscreen_timeout_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
-            </intent-filter>
-        </activity>
+        
         <activity android:name=".activities.SystemActivity"
             android:label="@string/system_settings_title_head">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="com.savagedzen.szparts.SHORTCUT" />
             </intent-filter>
-        </activity>
+        </activity> 
+        
         <activity android:name=".activities.CPUActivity"
             android:label="@string/cpu_settings_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SoundActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.SoundQuietHoursActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.PhoneGogglesActivity">
-           <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-           </intent-filter>
-        </activity>
-        <activity android:name=".activities.PhoneGogglesAppActivity">
-           <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-           </intent-filter>
-        </activity>
-        <activity android:name=".activities.PhoneGogglesDefaultActivity">
-           <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-           </intent-filter>
-        </activity>
-        <activity android:name=".activities.PhoneGogglesFilterActivity">
-           <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-           </intent-filter>
-        </activity>
 
-        <activity android:name=".activities.PowerWidgetActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activities.PowerWidgetOrderActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
+        <activity android:name=".activities.BatteryTester"
+            android:label="Battery Tester">
         </activity>
 
         <provider android:name=".provider.SettingsProvider"
@@ -151,24 +60,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.GestureMenuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activities.GestureListActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.EDIT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activities.GestureCreateActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.EDIT" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".activities.ChangeLog"
             android:label="@string/changelog_title">
             <intent-filter>
@@ -176,5 +67,6 @@
             </intent-filter>
         </activity>
 
+        <service android:enabled="true" android:name=".services.BatteryService" />
     </application>
 </manifest>

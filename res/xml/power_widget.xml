@@ -3,10 +3,7 @@
     <PreferenceCategory android:key="pref_buttons" android:title="@string/title_buttons" />
 
     <PreferenceCategory android:title="@string/title_button_modes">
-        <ListPreference android:key="pref_brightness_mode" android:dialogTitle="@string/pref_brightness_mode_title"
-            android:title="@string/pref_brightness_mode_title" android:summary="@string/pref_brightness_mode_summary"
-            android:entries="@array/entries_brightness_widget" android:entryValues="@array/values_brightness_widget" />
-
+        
         <ListPreference android:key="pref_network_mode" android:dialogTitle="@string/pref_network_mode_title"
             android:title="@string/pref_network_mode_title" android:summary="@string/pref_network_mode_summary"
             android:entries="@array/entries_network_widget" android:entryValues="@array/values_network_widget" />

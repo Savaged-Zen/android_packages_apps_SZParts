@@ -40,7 +40,7 @@
         android:title="@string/lockscreen_settings_title_head"
         android:summary="@string/lockscreen_settings_summary_head">
         <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.savagedzeb.szparts"
+            android:targetPackage="com.savagedzen.szparts"
             android:targetClass="com.savagedzen.szparts.activities.LockscreenActivity" />
     </PreferenceScreen>
 
@@ -66,7 +66,7 @@
         android:title="@string/system_settings_title_head"
         android:summary="@string/system_settings_summary_head">
         <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.savagaedzen.szparts"
+            android:targetPackage="com.savagedzen.szparts"
             android:targetClass="com.savagedzen.szparts.activities.SystemActivity" />
     </PreferenceScreen>
 
