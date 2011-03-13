@@ -12,53 +12,14 @@
 
     <application android:label="@string/app_name"
         android:icon="@drawable/sz_icon">
-        <receiver android:name=".intents.CPUReceiver" android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MEDIA_MOUNTED" />
-                <data android:scheme="file" />
-            </intent-filter>
-        </receiver>
         <activity android:name=".activities.MainActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.CreateShortcut"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.CREATE_SHORTCUT" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        
-        <activity android:name=".activities.SystemActivity"
-            android:label="@string/system_settings_title_head">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
-            </intent-filter>
-        </activity> 
-        
-        <activity android:name=".activities.CPUActivity"
-            android:label="@string/cpu_settings_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".activities.BatteryTester"
-            android:label="Battery Tester">
-        </activity>
-
         <provider android:name=".provider.SettingsProvider"
             android:authorities="com.savagedzen.szparts.provider.Settings" />
-
-        <activity android:name=".activities.WidgetOptionsActivity">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
-            </intent-filter>
-        </activity>
 
         <activity android:name=".activities.ChangeLog"
             android:label="@string/changelog_title">
@@ -66,7 +27,12 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+	<activity android:name=".activities.Credits"
+            android:label="@string/credits_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
-        <service android:enabled="true" android:name=".services.BatteryService" />
     </application>
 </manifest>
