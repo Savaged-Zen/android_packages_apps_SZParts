@@ -36,7 +36,7 @@ import com.android.internal.app.AlertController;
 
 public class Credits extends AlertActivity {
 
-    private static final String Credits_PATH = "/system/etc/CREDITS-SZ.txt";
+    private static final String CREDITS_PATH = "/system/etc/CREDITS-SZ.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,3 +95,4 @@ public class Credits extends AlertActivity {
     }
 
 }
+
