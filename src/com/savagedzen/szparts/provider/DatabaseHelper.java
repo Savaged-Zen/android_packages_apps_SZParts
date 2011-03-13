@@ -21,7 +21,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.cyanogenmod.cmparts.provider.SettingsProvider.Constants;
+import com.savagedzen.szparts.provider.SettingsProvider.Constants;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 

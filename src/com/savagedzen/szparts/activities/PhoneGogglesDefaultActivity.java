@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.activities;
-
-import com.savagedzen.szparts.R;
+package com.savagedzen.szparts.activities;
 
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
+
+import com.savagedzen.szparts.R;
 
 public class PhoneGogglesDefaultActivity
 extends PhoneGogglesAbstractActivity
