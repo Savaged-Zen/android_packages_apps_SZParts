@@ -21,6 +21,12 @@
         <provider android:name=".provider.SettingsProvider"
             android:authorities="com.savagedzen.szparts.provider.Settings" />
 
+        <activity android:name=".activities.CPUActivity"
+            android:label="@string/cpu_settings_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.ChangeLog"
             android:label="@string/changelog_title">
             <intent-filter>
