@@ -2,8 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
         <!-- CPU Settings -->
-        <PreferenceScreen android:key="cpu_settings"
-            android:title="@string/cpu_title">
+        <PreferenceScreen android:key="cpu_settings" android:title="@string/cpu_title" android:summary="@string/cpu_summary">
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.savagedzen.szparts"
                 android:targetClass="com.savagedzen.szparts.activities.CPUActivity" />

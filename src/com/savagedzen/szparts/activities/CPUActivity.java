@@ -30,6 +30,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 //
 // CPU Related Settings
 //
@@ -56,6 +59,8 @@ public class CPUActivity extends PreferenceActivity implements
     private ListPreference mMinFrequencyPref;
     private ListPreference mMaxFrequencyPref;
 
+    private AlertDialog alertDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +84,18 @@ public class CPUActivity extends PreferenceActivity implements
 
         PreferenceScreen PrefScreen = getPreferenceScreen();
 
+        // Set up the warning
+        alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle(R.string.performance_settings_warning_title);
+        alertDialog.setMessage(getResources().getString(R.string.performance_settings_warning));
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+
+        alertDialog.show();
+    
         temp = readOneLine(GOVERNOR);
 
         mGovernorPref = (ListPreference) PrefScreen.findPreference(GOV_PREF);
