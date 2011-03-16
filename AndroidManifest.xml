@@ -18,9 +18,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <provider android:name=".provider.SettingsProvider"
-            android:authorities="com.savagedzen.szparts.provider.Settings" />
 
+        <receiver android:name=".intents.CPUReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
         <activity android:name=".activities.CPUActivity"
             android:label="@string/cpu_settings_title">
             <intent-filter>
@@ -39,6 +43,9 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <provider android:name=".provider.SettingsProvider"
+            android:authorities="com.savagedzen.szparts.provider.Settings" />
 
     </application>
 </manifest>

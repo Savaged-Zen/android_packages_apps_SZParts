@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmparts.intents;
+package com.savagedzen.szparts.intents;
 
-import com.cyanogenmod.cmparts.activities.CPUActivity;
+import com.savagedzen.szparts.activities.CPUActivity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
