@@ -28,6 +28,7 @@
             android:label="@string/cpu_settings_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.cyanogenmod.cmparts.SHORTCUT" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.ChangeLog"
@@ -36,15 +37,15 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <provider android:name=".provider.SettingsProvider"
+            android:authorities="com.savagedzen.szparts.provider.Settings" />
+
 	<activity android:name=".activities.Credits"
             android:label="@string/credits_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
-        <provider android:name=".provider.SettingsProvider"
-            android:authorities="com.savagedzen.szparts.provider.Settings" />
-
     </application>
 </manifest>
