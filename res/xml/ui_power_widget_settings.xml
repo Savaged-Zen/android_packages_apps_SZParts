@@ -15,14 +15,14 @@
 		<PreferenceScreen android:key="widget_picker"
 			android:title="@string/title_widget_picker" android:summary="@string/summary_widget_picker">
 			<intent android:action="android.intent.action.MAIN"
-				android:targetPackage="com.salvagemod.salvageparts"
-				android:targetClass="com.salvagemod.salvageparts.activities.PowerWidgetActivity" />
+				android:targetPackage="com.savagedzen.szparts"
+				android:targetClass="com.savagedzen.szparts.activities.PowerWidgetActivity" />
 		</PreferenceScreen>
 		<PreferenceScreen android:key="widget_order"
 			android:title="@string/title_widget_order" android:summary="@string/summary_widget_order">
 			<intent android:action="android.intent.action.MAIN"
-				android:targetPackage="com.salvagemod.salvageparts"
-				android:targetClass="com.salvagemod.salvageparts.activities.PowerWidgetOrderActivity" />
+				android:targetPackage="com.savagedzen.szparts"
+				android:targetClass="com.savagedzen.szparts.activities.PowerWidgetOrderActivity" />
 		</PreferenceScreen>
 	</PreferenceCategory>
 
