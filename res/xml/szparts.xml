@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
         <!-- Performance Settings -->
-        <PreferenceScreen android:key="performance_settings"
-            android:title="@string/performance_settings_title_head"
-            android:summary="@string/performance_settings_summary_head">
+        <PreferenceScreen android:key="ui_power_widget_settings_menu"
+            android:title="@string/title_expanded_widget"
+            android:summary="@string/summary_expanded_widget">
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.salvagemod.salvageparts"
-                android:targetClass="com.salvagemod.salvageparts.activities.PerformanceActivity" />
+                android:targetClass="com.salvagemod.salvageparts.activities.UIPowerWidgetActivity" />
         </PreferenceScreen>
         <!-- CPU Settings -->
         <PreferenceScreen android:key="cpu_settings" android:title="@string/cpu_title" android:summary="@string/cpu_summary">
