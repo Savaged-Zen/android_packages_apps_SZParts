@@ -5,8 +5,8 @@
             android:title="@string/title_expanded_widget"
             android:summary="@string/summary_expanded_widget">
             <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.salvagemod.salvageparts"
-                android:targetClass="com.salvagemod.salvageparts.activities.UIPowerWidgetActivity" />
+                android:targetPackage="com.savagedzen.szparts"
+                android:targetClass="com.savagedzen.szparts.activities.UIPowerWidgetActivity" />
         </PreferenceScreen>
         <!-- CPU Settings -->
         <PreferenceScreen android:key="cpu_settings" android:title="@string/cpu_title" android:summary="@string/cpu_summary">
