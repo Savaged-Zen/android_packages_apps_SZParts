@@ -47,5 +47,25 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activities.UIPowerWidgetActivity"
+            android:label="@string/title_expanded_widget">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.salvagemod.salvageparts.SHORTCUT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.PowerWidgetActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.PowerWidgetOrderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>
