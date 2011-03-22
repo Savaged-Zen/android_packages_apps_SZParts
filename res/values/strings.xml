@@ -2,6 +2,7 @@
 <resources>
     <!-- Generic -->
     <string name="app_name">Savaged-Zen settings</string>
+    <string name="general_title">General</string>
 
     <!-- Change Log strings -->
     <string name="changelog_title">Changelog</string>
@@ -39,7 +40,7 @@
     <!-- Expanded View Power Widget -->
     <string name="title_widget_buttons">Expanded View Widget</string>
     <string name="title_expanded_widget">Notification power widget</string>
-    <string name="summary_expanded_widget">Use the expanded views power widget</string>
+    <string name="summary_expanded_widget">Use the expangded views power widget</string>
     <string name="title_expanded_hide_onchange">Hide on change</string>
     <string name="summary_expanded_hide_onchange">Hide the notification pulldown after toggling a widget button</string>
     <string name="expanded_color_mask">Indicator color</string>

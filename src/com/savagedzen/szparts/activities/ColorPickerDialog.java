@@ -316,7 +316,7 @@ public class ColorPickerDialog extends Dialog {
         layoutParams.setMargins(10, 0, 10, 5);
         
         TextView tv = new TextView(mContext);
-        tv.setText(com.salvagemod.salvageparts.R.string.msg_color_picker);
+        tv.setText(com.savagedzen.szparts.R.string.msg_color_picker);
         layout.addView(tv, layoutParams);
         
         mColorPickerView = new ColorPickerView(getContext(), onColorChangedListener, mInitialColor);        
@@ -335,7 +335,7 @@ public class ColorPickerDialog extends Dialog {
         layout.addView(mEditText, layoutParams);
 
         setContentView(layout);
-        setTitle(com.salvagemod.salvageparts.R.string.title_color_picker);
+        setTitle(com.savagedzen.szparts.R.string.title_color_picker);
     }
     
     private OnColorChangedListener onColorChangedListener = new OnColorChangedListener() {
