@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-        <!-- CPU Settings -->
-        <PreferenceScreen android:key="cpu_settings" android:title="@string/cpu_title" android:summary="@string/cpu_summary">
-            <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.savagedzen.szparts"
-                android:targetClass="com.savagedzen.szparts.activities.CPUActivity" />
-        </PreferenceScreen>
         <!-- Change Log -->
         <PreferenceScreen android:key="changelog"
             android:title="@string/changelog_title">
