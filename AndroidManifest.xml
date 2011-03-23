@@ -12,10 +12,23 @@
 
     <application android:label="@string/app_name"
         android:icon="@drawable/sz_icon">
+        <receiver android:name=".intents.CPUReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
         <activity android:name=".activities.MainActivity" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.CPUActivity"
+            android:label="@string/cpu_settings_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.cyanogenmod.cmparts.SHORTCUT" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.ChangeLog"
