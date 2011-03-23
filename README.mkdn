@@ -1,0 +1,11 @@
+SZParts
+=======
+
+What is SZParts?
+----------------
+SZParts is a central location for Savaged-Zen specific settings, instead of cluttering the AOSP Settings app.
+
+
+This app has been modified from CMParts source code found here:  All credit for original development goes to the CyanogenMod Team
+Note - This repository has been moved to http://github.com/CyanogenMod/android_packages_apps_CMParts
+
