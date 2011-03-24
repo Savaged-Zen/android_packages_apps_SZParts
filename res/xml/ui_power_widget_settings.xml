@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<!-- Expanded View Power Widget -->
-	<PreferenceCategory android:title="@string/general_title" android:key="pref_power_widget">
+	<PreferenceCategory android:title="@string/general_title">
 		<CheckBoxPreference android:key="expanded_widget"
 			android:title="@string/title_expanded_widget" android:summary="@string/summary_expanded_widget"
 			android:defaultValue="true" />
