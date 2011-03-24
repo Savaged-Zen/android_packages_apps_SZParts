@@ -37,6 +37,13 @@
     <string name="performance_settings_warning_title">WARNING: Raging Monkeys Ahead!</string>
     <string name="performance_settings_warning">If you do not know how these settings work, you can make your phone very unstable.  Proceed with caution.</string>
 
+    <!-- User Interface -->
+    <string name="title_expanded_ui">User Interface Settings</string>
+    <string name="summary_expanded_ui">Control appearance of device</string>
+    <string name="ui_settings_title_head">User Interface Settings</string>
+    <string name="pref_status_bar_bottom_title">Status bar bottom</string>
+    <string name="pref_status_bar_bottom_summary">Status bar will appear on bottom of screen</string>
+
     <!-- Expanded View Power Widget -->
     <string name="title_widget_buttons">Expanded View Widget</string>
     <string name="title_expanded_widget">Notification power widget</string>
@@ -84,4 +91,5 @@
     <!-- Color Picker -->
     <string name="title_color_picker">Pick a color</string>
     <string name="msg_color_picker">Tap on center color to confirm.\nPress back to cancel</string>
+
 </resources>
