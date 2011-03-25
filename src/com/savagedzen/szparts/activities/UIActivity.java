@@ -18,14 +18,14 @@ package com.savagedzen.szparts.activities;
 
 import com.savagedzen.szparts.R;
 
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
+//import android.hardware.Sensor;
+//import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
+//import android.os.IBinder;
+//import android.os.Parcel;
 import android.os.SystemProperties;
-import android.os.RemoteException;
-import android.os.ServiceManager;
+//import android.os.RemoteException;
+//import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.EditTextPreference;
@@ -35,34 +35,19 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+//import android.provider.Settings.SettingNotFoundException;
 
-public class UIActivity extends PreferenceActivity implements 
-OnPreferenceChangeListener {
-	private static final String POWER_WIDGET_SCREEN = "pref_power_widget";
-	private PreferenceScreen mPowerWidgetScreen;
+public class UIActivity extends PreferenceActivity implements OnPreferenceChangeListener {
 
+    private PreferenceScreen mPowerWidgetScreen;
 
-    /* Preference Screens */
-
-    private PreferenceScreen mExtrasScreen;
-
-    /* Other */
-
+    private static final String POWER_WIDGET_SCREEN = "pref_power_widget";
     private static final String LCDD_PREF = "pref_lcdd";
     private static final String LCDD_PROP = "ro.sf.lcd_density";
     private static final String LCDD_PERSIST_PROP = "persist.sys.lcd_density";
     private static final String LCDD_DEFAULT = "240";
-    private static final String ELECTRON_BEAM_ANIMATION_ON = 
-"electron_beam_animation_on";
-    private static final String ELECTRON_BEAM_ANIMATION_OFF = 
-"electron_beam_animation_off";
-
   
     private EditTextPreference mLcddPref;
-
-    private CheckBoxPreference mElectronBeamAnimationOn;
-    private CheckBoxPreference mElectronBeamAnimationOff;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,27 +60,6 @@ OnPreferenceChangeListener {
 	
         /* Power Widget*/
 	mPowerWidgetScreen = (PreferenceScreen) prefSet.findPreference(POWER_WIDGET_SCREEN);
-
-        /* Electron Beam control */
-        boolean animateScreenLights = getResources().getBoolean(
-                com.android.internal.R.bool.config_animateScreenLights);
-        mElectronBeamAnimationOn = 
-(CheckBoxPreference)prefSet.findPreference(ELECTRON_BEAM_ANIMATION_ON);
-        
-mElectronBeamAnimationOn.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.ELECTRON_BEAM_ANIMATION_ON, 0) == 1);
-        mElectronBeamAnimationOff = 
-(CheckBoxPreference)prefSet.findPreference(ELECTRON_BEAM_ANIMATION_OFF);
-        
-mElectronBeamAnimationOff.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.ELECTRON_BEAM_ANIMATION_OFF, 1) == 1);
-
-        /* Hide Electron Beam controls if electron beam is disabled */
-        if (animateScreenLights) {
-            prefSet.removePreference(mElectronBeamAnimationOn);
-            prefSet.removePreference(mElectronBeamAnimationOff);
-
-        }
 
    	/* LCD Density Changer */
 	mLcddPref = (EditTextPreference) prefSet.findPreference(LCDD_PREF);
@@ -110,33 +74,18 @@ mElectronBeamAnimationOff.setChecked(Settings.System.getInt(getContentResolver()
         if (preference == mLcddPref) {
             if (newValue != null) {
                 SystemProperties.set(LCDD_PERSIST_PROP, (String)newValue);
-        return true;
+                return true;
 	    }
         }
 	return false;
-	}
+    }
 	
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, 
-Preference preference) {
-        boolean value;
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         // Opens Notification Power Widget Options		
         if (preference == mPowerWidgetScreen) {		
             startActivity(mPowerWidgetScreen.getIntent());		
             return true;		
         }
-	if (preference == mElectronBeamAnimationOn) {
-            value = mElectronBeamAnimationOn.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.ELECTRON_BEAM_ANIMATION_ON, value ? 1 : 0);
-        }
-
-        if (preference == mElectronBeamAnimationOff) {
-            value = mElectronBeamAnimationOff.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.ELECTRON_BEAM_ANIMATION_OFF, value ? 1 : 
-0);
-        }
-
-        return true;
+        return false;
     }
 }

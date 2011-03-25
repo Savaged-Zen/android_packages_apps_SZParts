@@ -90,12 +90,8 @@
     <string name="pref_flash_mode_summary">Choose High / Death Ray(Evo)</string>
     <string name="widget_max_buttons">6 is the max amount of buttons.</string>
 
-    <!-- Electron Beam Animation -->
-    <string name="pref_electron_beam_title">Screen On/Off Animation</string>
-    <string name="pref_electron_beam_animation_on">Screen-on animation</string>
-    <string name="pref_electron_beam_animation_off">Screen-off animation</string>
-
     <!-- Color Picker -->
     <string name="title_color_picker">Pick a color</string>
     <string name="msg_color_picker">Tap on center color to confirm.\nPress back to cancel</string>
+
 </resources>
