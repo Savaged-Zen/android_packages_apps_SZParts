@@ -44,6 +44,12 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+		<activity android:name=".activities.vvdlevelshavs"
+            android:label="@string/vvdlevelshavs_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <provider android:name=".provider.SettingsProvider"
             android:authorities="com.savagedzen.szparts.provider.Settings" />
