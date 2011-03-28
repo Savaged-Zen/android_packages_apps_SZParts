@@ -11,6 +11,15 @@
     <string name="changelog_error">Error loading changelog...</string>
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
+	
+	    <!-- vvdlevelshavs strings -->
+    <string name="vvdlevelshavs_title">Current HAVS Levels</string>
+    <string name="vvdlevelshavs_dialog">VVD HAVS</string>
+    <string name="vvdlevelshavs_loading">Loading current levels...</string>
+    <string name="vvdlevelshavs_error">Your kernel does not support sysfs on HAVS...</string>
+    <string name="vvdlevelshavs_unknown">Unknown</string>
+    <string name="vvdlevelshavs_version">Version</string>
+	
     <!-- User Interface : LCD Density Changer -->
     <string name="ui_lcdd_title">LCD Density</string>
     <string name="pref_lcdd_title">LCD Density Size</string>
