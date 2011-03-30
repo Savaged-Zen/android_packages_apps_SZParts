@@ -12,13 +12,38 @@
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
 	
-	    <!-- vvdlevelshavs strings -->
-    <string name="vvdlevelshavs_title">Current HAVS Levels</string>
-    <string name="vvdlevelshavs_dialog">VVD HAVS</string>
-    <string name="vvdlevelshavs_loading">Loading current levels...</string>
-    <string name="vvdlevelshavs_error">Your kernel does not support sysfs on HAVS...</string>
-    <string name="vvdlevelshavs_unknown">Unknown</string>
-    <string name="vvdlevelshavs_version">Version</string>
+    <!-- vddlevelshavs strings -->
+    <string name="vddlevelshavs_title">Current HAVS Levels</string>
+    <string name="vddlevelshavs_dialog">VDD HAVS</string>
+    <string name="vddlevelshavs_loading">Loading current levels...</string>
+    <string name="vddlevelshavs_error">Your kernel does not support sysfs on HAVS...</string>
+    <string name="vddlevelshavs_unknown">Unknown</string>
+    <string name="vddlevelshavs_version">Version</string>
+
+    <!-- Kernel strings -->
+    <string name="kernel_title">Kernel settings</string>
+    <string name="kernel_summary">Adjust kernel-specific values\n(Savaged-Zen kernel only)</string>
+    <string name="kernel_advanced_title">Advanced kernel options</string>
+    <string name="kernel_advanced_summary">WARNING: ONLY FOR ADVANCED USERS\nSet custom HAVS levels</string>
+    <string name="uv_title">Undervolt level</string>
+    <string name="uv_summary">List of available undervolt level options\nCurrently selected: %S</string>
+    <string name="uv_profiles_title">Profiles</string>
+    <string name="uv_profiles_summary">List of available profiles\nCurrently selected: %S</string>
+    <string name="uv_use_custom_title">Enable custom settings</string>
+    <string name="uv_use_custom_summary">USE WITH CAUTION\nUse custom values for undervolting</string>
+    <string name="uv_custom_freq_title">Custom frequency</string>
+    <string name="uv_custom_freq_summary">Frequency value to modify\nCurrent setting: %S</string>
+    <string name="uv_custom_min_title">Minimum voltage</string>
+    <string name="uv_custom_min_summary">Minimum undervolt value\nCurrent setting: %S</string>
+    <string name="uv_custom_max_title">Maximum settings</string>
+    <string name="uv_custom_max_summary">Maximum undervolt value\nCurrent setting: %S</string>
+    <string name="uv_set_on_boot_title">Set on boot</string>
+    <string name="uv_set_on_boot_summary">Restore saved settings on reboot</string>
+    <string name="uv_freq_title">CPU Frequency</string>
+    <string name="uv_freq_summary">List of available CPU frequencies\nCurrently selected: %S</string>
+    <string name="uv_warning_title">CAUTION! Brick throwing monkeys nearby!</string>
+    <string name="uv_warning">We are NOT responsible for what you do with these settings.  It is VERY possibe for you to cause permanent damage or brick your device by improperly setting these values.  Proceed with caution!</string>
+
 	
     <!-- User Interface : LCD Density Changer -->
     <string name="ui_lcdd_title">LCD Density</string>

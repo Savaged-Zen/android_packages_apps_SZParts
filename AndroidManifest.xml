@@ -44,8 +44,20 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-		<activity android:name=".activities.vvdlevelshavs"
-            android:label="@string/vvdlevelshavs_title">
+	<activity android:name=".activities.vddlevelshavs"
+            android:label="@string/vddlevelshavs_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+	<activity android:name=".activities.KernelActivity"
+            android:label="@string/kernel_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+	<activity android:name=".activities.KernelAdvancedActivity"
+            android:label="@string/kernel_advanced_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
