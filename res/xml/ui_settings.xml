@@ -14,14 +14,6 @@
                    android:targetClass="com.savagedzen.szparts.activities.UIPowerWidgetActivity" />		
             </PreferenceScreen>		
 			
-    </PreferenceCategory>
-    <PreferenceCategory android:title="@string/ui_lcdd_title">
-       <EditTextPreference 
-	    android:key="pref_lcdd"
-	    android:name="Lcd Density Preference"
-            android:title="@string/pref_lcdd_title"
-            android:summary="@string/pref_lcdd_summary"
-	    android:numeric="integer"  />
     </PreferenceCategory>		
 
 </PreferenceScreen>

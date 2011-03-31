@@ -18,14 +18,8 @@ package com.savagedzen.szparts.activities;
 
 import com.savagedzen.szparts.R;
 
-//import android.hardware.Sensor;
-//import android.hardware.SensorManager;
 import android.os.Bundle;
-//import android.os.IBinder;
-//import android.os.Parcel;
 import android.os.SystemProperties;
-//import android.os.RemoteException;
-//import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.EditTextPreference;
@@ -35,7 +29,6 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-//import android.provider.Settings.SettingNotFoundException;
 
 public class UIActivity extends PreferenceActivity implements OnPreferenceChangeListener {
 
