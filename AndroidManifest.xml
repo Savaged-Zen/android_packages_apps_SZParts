@@ -44,7 +44,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-	<activity android:name=".activities.vddlevelshavs"
+	<activity android:name=".activities.VDDLevelsHavsActivity"
             android:label="@string/vddlevelshavs_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
