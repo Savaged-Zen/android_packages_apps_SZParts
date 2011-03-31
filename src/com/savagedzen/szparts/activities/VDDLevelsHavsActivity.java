@@ -34,7 +34,7 @@ import java.io.InputStreamReader;
 import com.android.internal.app.AlertActivity;
 import com.android.internal.app.AlertController;
 
-public class VDDLevelHavsActivity extends AlertActivity {
+public class VDDLevelsHavsActivity extends AlertActivity {
 
     private static final String vddlevelshavs_PATH = "/sys/devices/system/cpu/cpu0/cpufreq/vdd_levels_havs";
 
