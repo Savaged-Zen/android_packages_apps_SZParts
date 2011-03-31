@@ -179,7 +179,7 @@ public class KernelActivity extends PreferenceActivity implements
 
     public boolean changeHAVS(String profile, String UV) {
         ShellCommand cmd = new ShellCommand();
-        String filePath = "/system/etc/";
+        String filePath = "/system/etc/vdd_profiles/";
         String fileTOrun = null;
         String tmpProfile = null;
         String tmpUV = null;
