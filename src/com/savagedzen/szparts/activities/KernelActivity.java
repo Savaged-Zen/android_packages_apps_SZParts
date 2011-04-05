@@ -69,7 +69,7 @@ public class KernelActivity extends PreferenceActivity implements
     private ListPreference mProfiles;
 
     private CheckBoxPreference mUseCustom;
-    private CheckBoxPreference mSOB;
+   // private CheckBoxPreference mSOB;
 
     private AlertDialog alertDialog;
 
@@ -88,6 +88,11 @@ public class KernelActivity extends PreferenceActivity implements
 
         PreferenceScreen PrefScreen = getPreferenceScreen();
 
+        mAdvancedScreen = (PreferenceScreen) PrefScreen.findPreference(ADVANCED_SCREEN);
+        mApply = (Preference) PrefScreen.findPreference(APPLY_PREF);
+        mUseCustom = (CheckBoxPreference) PrefScreen.findPreference(USE_CUSTOM_PREF);
+       // mSOB = (CheckBoxPreference) PrefScreen.findPreference(SOB_PREF);
+
         // Set up the warning
         alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle(R.string.performance_settings_warning_title);
@@ -99,13 +104,6 @@ public class KernelActivity extends PreferenceActivity implements
         });
 
         alertDialog.show();
-
-        mAdvancedScreen = (PreferenceScreen) PrefScreen.findPreference(ADVANCED_SCREEN);
-        mUseCustom = (CheckBoxPreference) PrefScreen.findPreference(USE_CUSTOM_PREF);
-        mUseCustom.setOnPreferenceChangeListener(this);
-
-        //mSOB = (CheckBoxPreference) PrefScreen.findPreference(SOB_PREF);
-
 
         if (mUseCustom.isChecked()) {
             mAdvancedScreen.setEnabled(true);
@@ -135,22 +133,9 @@ public class KernelActivity extends PreferenceActivity implements
     public void onResume() {
         super.onResume();
 
-        mProfiles.setSummary(String.format(mProfileFormat, mSetProfile));
-        mUndervolt.setSummary(String.format(mUVFormat, mSetUV));
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        boolean value;
-
-        if (preference.getKey().contains(USE_CUSTOM_PREF)) {
-            if ((Boolean) newValue) {
-                mAdvancedScreen.setEnabled(true);
-                return true;
-             } else if (!(Boolean) newValue) {
-                mAdvancedScreen.setEnabled(false);
-                return true;
-             }
-        }
 
         if (newValue != null) {
             if (preference == mProfiles) {
@@ -170,9 +155,22 @@ public class KernelActivity extends PreferenceActivity implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference.getKey().equals(APPLY_PREF)) {
+        boolean value;
+
+        if (preference == mApply) {
                 changeHAVS(mSetProfile, mSetUV);
                 return true;
+        }
+
+        if (preference == mUseCustom) {
+            value = mUseCustom.isChecked();
+            if (value) {
+                mAdvancedScreen.setEnabled(true);
+                return true;
+            } else if (!value) {
+                mAdvancedScreen.setEnabled(false);
+                return true;
+            }
         }
         return false;
     }
