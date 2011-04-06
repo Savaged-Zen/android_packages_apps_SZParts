@@ -192,10 +192,8 @@
     </string-array>
 
     <string-array name="values_uv_profiles" translatable="false">
-        <item>SVS</item>
-        <item>Less Aggressive</item>
+        <item>SVS</item> 
         <item>Savaged-Zen</item>
-        <item>More Aggressive</item>
-    </string-array>
+        </string-array>
 
 </resources>
