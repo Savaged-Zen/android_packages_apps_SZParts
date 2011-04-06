@@ -20,231 +20,132 @@ import com.savagedzen.szparts.R;
 import com.savagedzen.szparts.utils.ShellCommand;
 import com.savagedzen.szparts.utils.ShellCommand.CommandResult;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import java.io.File;
 
 //
 // Kernel Related Settings
 //
-public class KernelActivity extends PreferenceActivity implements
-        Preference.OnPreferenceChangeListener {
+public class KernelActivity extends PreferenceActivity {
 
-    private static final String UV_PATH = "/sys/devices/system/cpu/cpu0/cpufreq/vdd_levels_havs";
-
-    public static final String UV_PREF = "pref_uv";
-    public static final String PROFILES_PREF = "pref_uv_profiles";
-    public static final String USE_CUSTOM_PREF = "pref_uv_use_custom";
-    public static final String UV_CUSTOM_PREF = "pref_uv_custom";
-    public static final String SOB_PREF = "pref_set_on_boot";
-    public static final String ADVANCED_SCREEN = "KernelAdvancedActivity";
-    public static final String APPLY_PREF = "pref_apply";
-
+    public static final String HAVS_SCREEN = "HAVSActivity";
+    public static final String SBC_PREF = "pref_sbc";
     private static final String TAG = "KernelSettings";
 
-    private String mSetUV = "";
-    private String mSetProfile = "";
-    private String mUVFormat;
-    private String mProfileFormat;
+    private PreferenceScreen mHAVSScreen;
+    private CheckBoxPreference mSBCPref;
 
-    private PreferenceScreen mAdvancedScreen;
-
-    private Preference mApply;
-
-    private ListPreference mUndervolt;
-    private ListPreference mProfiles;
-
-    private CheckBoxPreference mUseCustom;
-   // private CheckBoxPreference mSOB;
-
-    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mUVFormat = getString(R.string.uv_summary);
-        mProfileFormat = getString(R.string.uv_profiles_summary);
-
-        String[] availableProfiles = getResources().getStringArray(R.array.values_uv_profiles);
-        String[] availableUV = getResources().getStringArray(R.array.values_uv_havs);
 
         setTitle(R.string.kernel_title);
         addPreferencesFromResource(R.xml.kernel_settings);
 
         PreferenceScreen PrefScreen = getPreferenceScreen();
 
-        mAdvancedScreen = (PreferenceScreen) PrefScreen.findPreference(ADVANCED_SCREEN);
-        mApply = (Preference) PrefScreen.findPreference(APPLY_PREF);
-        mUseCustom = (CheckBoxPreference) PrefScreen.findPreference(USE_CUSTOM_PREF);
-       // mSOB = (CheckBoxPreference) PrefScreen.findPreference(SOB_PREF);
+        mHAVSScreen = (PreferenceScreen) PrefScreen.findPreference(HAVS_SCREEN);
+        mSBCPref= (CheckBoxPreference) PrefScreen.findPreference(SBC_PREF);
 
-        // Set up the warning
-        alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle(R.string.performance_settings_warning_title);
-        alertDialog.setMessage(getResources().getString(R.string.performance_settings_warning));
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                return;
-            }
-        });
+        boolean vddExists = new File("/system/etc/vdd_profiles").exists();
+        boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc").exists();
 
-        alertDialog.show();
+	IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+	registerReceiver(battery_receiver, filter);
 
-        if (mUseCustom.isChecked()) {
-            mAdvancedScreen.setEnabled(true);
-        } else if (!mUseCustom.isChecked()) {
-            mAdvancedScreen.setEnabled(false);
+        if (vddExists) {
+            mHAVSScreen.setEnabled(true);
+            mHAVSScreen.setSummary(R.string.havs_summary);
+        } else if (!vddExists) {
+            mHAVSScreen.setEnabled(false);
+            mHAVSScreen.setSummary(R.string.unsupported_feature);
         }
 
-        // UV Profiles radio-list
-        mProfiles = (ListPreference) PrefScreen.findPreference(PROFILES_PREF);
-        mProfiles.setEntryValues(availableProfiles);
-        mProfiles.setEntries(availableProfiles);
-        mProfiles.setValue(mSetProfile);
-        mProfiles.setSummary(String.format(mProfileFormat, mSetProfile));
-        mProfiles.setOnPreferenceChangeListener(this);
-
-        // Undervolt radio-list
-        mUndervolt = (ListPreference) PrefScreen.findPreference(UV_PREF);
-        mUndervolt.setEntryValues(availableUV);
-        mUndervolt.setEntries(availableUV);
-        mUndervolt.setValue(mSetUV);
-        mUndervolt.setSummary(String.format(mUVFormat, mSetUV));
-        mUndervolt.setOnPreferenceChangeListener(this);
-        
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-
-        if (newValue != null) {
-            if (preference == mProfiles) {
-                mSetProfile = (String) newValue;
-                mProfiles.setSummary(String.format(mProfileFormat, mSetProfile));
-                return true;
-            }
-            if (preference == mUndervolt) {
-                mSetUV = (String) newValue;
-                mUndervolt.setSummary(String.format(mUVFormat, mSetUV));
-                return true;
-            }
+        if (sbcExists) {
+            mSBCPref.setEnabled(true);
+            SystemProperties.set("sys.kernel.sbc", "true");
+            //mSBCPref.setSummary(R.string.kernel_sbc_summary);
+            changeSBC(mSBCPref.isChecked());
+        } else if (!sbcExists) {  
+            mSBCPref.setEnabled(false);
+            //SystemProperties.set("sys.kernel.sbc", "false");
+            mSBCPref.setSummary(R.string.unsupported_feature);
         }
-
-        return false;
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        boolean value;
 
-        if (preference == mApply) {
-                changeHAVS(mSetProfile, mSetUV);
-                return true;
-        }
-
-        if (preference == mUseCustom) {
-            value = mUseCustom.isChecked();
-            if (value) {
-                mAdvancedScreen.setEnabled(true);
-                return true;
-            } else if (!value) {
-                mAdvancedScreen.setEnabled(false);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean changeHAVS(String profile, String UV) {
-        ShellCommand cmd = new ShellCommand();
-        String filePath = "/system/etc/vdd_profiles/";
-        String fileTOrun = null;
-        String tmpProfile = null;
-        String tmpUV = null;
-
-        // Determins and sets short profile
-        if ("Savaged-Zen".equals(profile)) {
-            tmpProfile = "SZ";
-            tmpUV = UV;
-        }
-
-        // If tmpUV is empty, make null to show correct errors
-        if("".equals(tmpUV)) {
-            tmpUV = null;
-        }
-
-        // Attempt to run script based on user input
-        if(tmpProfile != null && tmpUV != null) {
-            fileTOrun = filePath + tmpUV + tmpProfile + ".sh";
-            CommandResult r = cmd.su.runWaitFor(fileTOrun);
-            if (!r.success()) {
-                Log.d(TAG, "Error " + r.stderr);
-                Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
-                Toast.makeText(this, "File: " + fileTOrun + " had eror: " + r.stdout, Toast.LENGTH_LONG).show();
-                return true;
+        if (preference == mSBCPref) {
+            if (mSBCPref.isChecked()) {
+                changeSBC(true);
             } else {
-                Log.d(TAG, "Successfully executed: " + fileTOrun + "Result: " + r.stdout);
-                Toast.makeText(this, "File: " + fileTOrun + " sucessfully executed!", Toast.LENGTH_LONG).show();
-                return false;
+                changeSBC(false);
             }
-        } else if (tmpProfile == null || tmpUV == null) {
-            Log.d(TAG, "No profile or UV level selected!");
-            Toast.makeText(this, "No profile and/or Undervolt level selected!", Toast.LENGTH_LONG).show();
-            return false;
+            return true;
         }
         return false;
     }
 
-    public static String readOneLine(String fname) {
-        BufferedReader br;
-        String line = null;
+    public boolean changeSBC(boolean onOFF) {
 
-        try {
-            br = new BufferedReader(new FileReader(fname), 512);
-            try {
-                line = br.readLine();
-            } finally {
-                br.close();
+	IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+	registerReceiver(battery_receiver, filter);
+
+        ShellCommand cmd = new ShellCommand();
+        if (onOFF) {
+            SystemProperties.set("sys.kernel.sbc", "true");
+            CommandResult r = cmd.sh.runWaitFor("echo 1 > /sys/kernel/batt_options/sbc/sysctl_batt_sbc");
+            if (!r.success()) {
+                Log.d(TAG, "Starting SBC returned error: " + r.stderr);
+                Toast.makeText(this, "Error starting SBC", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.d(TAG, "SBC sucessfully started! Result: " + r.stdout);
+                Toast.makeText(this, "SBC sucessfully started!", Toast.LENGTH_SHORT).show();
             }
-        } catch (Exception e) {
-            Log.e(TAG, "IO Exception when reading /sys/ file", e);
+            return true;
+        } else if (!onOFF) {  
+            SystemProperties.set("sys.kernel.sbc", "false");
+            CommandResult r = cmd.sh.runWaitFor("echo 0 > /sys/kernel/batt_options/sbc/sysctl_batt_sbc");
+            if (!r.success()) {
+                Log.d(TAG, "Starting SBC returned error: " + r.stderr);
+                Toast.makeText(this, "Error starting SBC", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.d(TAG, "SBC sucessfully stopped! Result: " + r.stdout);
+                Toast.makeText(this, "SBC sucessfully stopped!", Toast.LENGTH_SHORT).show();
+            }
+            return true;
         }
-        return line;
+        return false;
     }
 
-    public static boolean writeOneLine(String fname, String value) {
-        try {
-            FileWriter fw = new FileWriter(fname);
-            try {
-                fw.write(value);
-            } finally {
-                fw.close();
-            }
-        } catch (IOException e) {
-            String Error = "Error writing to " + fname + ". Exception: ";
-            Log.e(TAG, Error, e);
-            return false;
+    private BroadcastReceiver battery_receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+        int mPluggedIn = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);;
+    	
+        if (mPluggedIn == 0) {
+            mSBCPref.setEnabled(true);
+            mSBCPref.setSummary(R.string.kernel_sbc_summary);
+        } else {
+            mSBCPref.setEnabled(false);
+            mSBCPref.setSummary(R.string.kernel_charging);
         }
-        return true;
-    }
+            Log.d(TAG, "RECEIVED: " + intent.toString());
+        }
+    };
 }

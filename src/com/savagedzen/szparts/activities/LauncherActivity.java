@@ -1,5 +1,6 @@
-package com.savagedzen.szparts;
+package com.savagedzen.szparts.activities;
 
+import com.savagedzen.szparts.R;
 import java.util.List;
 
 import android.app.Activity;
@@ -29,7 +30,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-public class LauncherSettings extends PreferenceActivity
+public class LauncherActivity extends PreferenceActivity
 implements SharedPreferences.OnSharedPreferenceChangeListener {
 	
     private static final String TAG = "LauncherSettings";
@@ -61,7 +62,7 @@ implements SharedPreferences.OnSharedPreferenceChangeListener {
     public void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.launcher_prefs);
-		PreferenceManager.setDefaultValues(LauncherMode.this, R.xml.launcher_prefs, false);
+		PreferenceManager.setDefaultValues(LauncherActivity.this, R.xml.launcher_prefs, false);
 		
 		// All preferences are call from the fallowing function
 		// If you add preferences add the to the function below and
@@ -139,8 +140,3 @@ implements SharedPreferences.OnSharedPreferenceChangeListener {
      	 	activity.killBackgroundProcesses(LAUNCHER);	
          }
 }
-
-
- 
-
-
