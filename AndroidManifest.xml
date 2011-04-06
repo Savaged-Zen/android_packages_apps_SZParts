@@ -45,8 +45,8 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LauncherSettings"
-            android:label="LauncherSettings">
+        <activity android:name=".activities.LauncherActivity"
+            android:label="LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -59,6 +59,13 @@
         </activity>
 	<activity android:name=".activities.KernelActivity"
             android:label="@string/kernel_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.content.Intent.ACTION_BATTERY_CHANGED" />
+            </intent-filter>
+        </activity>
+	<activity android:name=".activities.HAVSActivity"
+            android:label="@string/havs_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

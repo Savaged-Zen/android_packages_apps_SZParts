@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<PreferenceCategory android:key="cat_kernel" android:title="@string/general_title">
+  <!-- Current HAVS Settings -->
+  <PreferenceScreen android:key="vddlevelshavs"
+        android:title="@string/vddlevelshavs_title">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.savagedzen.szparts"
+            android:targetClass="com.savagedzen.szparts.activities.VDDLevelsHavsActivity" />
+  </PreferenceScreen>
+
+  <ListPreference android:key="pref_uv_profiles" android:dialogTitle="@string/uv_profiles_title"
+                  android:title="@string/uv_profiles_title" android:summary="@string/uv_profiles_summary" />
+
+  <ListPreference android:key="pref_uv" android:dialogTitle="@string/uv_title"
+                  android:title="@string/uv_title" android:summary="@string/uv_summary" />
+
+  <Preference android:key="pref_apply" android:title="Apply" />
+
+
+  <CheckBoxPreference android:key="pref_set_uv_on_boot"
+                      android:title="@string/uv_set_on_boot_title" android:summary="@string/uv_set_on_boot_summary"/>
+
+</PreferenceCategory>
+
+<PreferenceCategory android:key="cat_kernel_advanced" android:title="Advanced Options">
+
+  <CheckBoxPreference android:key="pref_uv_use_custom"
+                      android:title="@string/uv_use_custom_title" android:summary="@string/uv_use_custom_summary"/>
+
+  <!-- Advanced Kernel Settings -->
+  <PreferenceScreen android:key="KernelAdvancedActivity"
+        android:title="@string/kernel_advanced_title"
+        android:summary="@string/kernel_advanced_summary" >
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.savagedzen.szparts"
+            android:targetClass="com.savagedzen.szparts.activities.KernelAdvancedActivity" />
+  </PreferenceScreen>
+</PreferenceCategory>
+</PreferenceScreen>

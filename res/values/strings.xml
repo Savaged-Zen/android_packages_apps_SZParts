@@ -44,9 +44,15 @@
 
     <!-- Kernel strings -->
     <string name="kernel_title">Kernel settings</string>
-    <string name="kernel_summary">Adjust kernel-specific values\n(Savaged-Zen kernel only)</string>
+    <string name="kernel_summary">Adjust kernel-specific values</string>
     <string name="kernel_advanced_title">Advanced kernel options</string>
     <string name="kernel_advanced_summary">WARNING: ONLY FOR ADVANCED USERS\nSet custom HAVS levels</string>
+    <string name="havs_title">HAVS settings</string>
+    <string name="havs_summary">Adjust HAVS Undervolt settings</string>
+    <string name="kernel_sbc_title">SBC</string>
+    <string name="kernel_sbc_summary">Super Battery Charge\n(Trickle charge)</string>
+    <string name="kernel_charging">This feature cannot be changed while plugged in.\nPlease unplug to modify setting.</string>
+    <string name="unsupported_feature">Feature unsupported by kernel</string>
     <string name="uv_title">Undervolt level</string>
     <string name="uv_summary">List of available undervolt level options\nCurrently selected: %S</string>
     <string name="uv_profiles_title">Profiles</string>

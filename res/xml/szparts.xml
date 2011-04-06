@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<-- Launcher App -->
+	<!-- Launcher App -->
         <PreferenceScreen android:key="settings_launcher"
                 android:title="@string/settings_launcher" 
                 android:summary="@string/settings_launcher_summary">
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="com.savagedzen.szparts"
-                    android:targetClass="com.savagedzen.szparts.LauncherSettings" />
+                    android:targetClass="com.savagedzen.szparts.activities.LauncherActivity" />
         </PreferenceScreen> 
 
        <!-- Notification Power Widget Settings -->		
