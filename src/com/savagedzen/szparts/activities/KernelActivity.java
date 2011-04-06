@@ -45,6 +45,9 @@ public class KernelActivity extends PreferenceActivity {
     public static final String SBC_PREF = "pref_sbc";
     private static final String TAG = "KernelSettings";
 
+    private boolean vddExists = new File("/system/etc/vdd_profiles").exists();
+    private boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc").exists();
+
     private PreferenceScreen mHAVSScreen;
     private CheckBoxPreference mSBCPref;
 
@@ -61,9 +64,6 @@ public class KernelActivity extends PreferenceActivity {
         mHAVSScreen = (PreferenceScreen) PrefScreen.findPreference(HAVS_SCREEN);
         mSBCPref= (CheckBoxPreference) PrefScreen.findPreference(SBC_PREF);
 
-        boolean vddExists = new File("/system/etc/vdd_profiles").exists();
-        boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc").exists();
-
 	IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 	registerReceiver(battery_receiver, filter);
 
@@ -77,8 +77,8 @@ public class KernelActivity extends PreferenceActivity {
 
         if (sbcExists) {
             mSBCPref.setEnabled(true);
-            SystemProperties.set("sys.kernel.sbc", "true");
-            //mSBCPref.setSummary(R.string.kernel_sbc_summary);
+            //SystemProperties.set("sys.kernel.sbc", "true");
+            mSBCPref.setSummary(R.string.kernel_sbc_summary);
             changeSBC(mSBCPref.isChecked());
         } else if (!sbcExists) {  
             mSBCPref.setEnabled(false);
@@ -118,7 +118,7 @@ public class KernelActivity extends PreferenceActivity {
                 Toast.makeText(this, "SBC sucessfully started!", Toast.LENGTH_SHORT).show();
             }
             return true;
-        } else if (!onOFF) {  
+        } else if (!onOFF) {
             SystemProperties.set("sys.kernel.sbc", "false");
             CommandResult r = cmd.sh.runWaitFor("echo 0 > /sys/kernel/batt_options/sbc/sysctl_batt_sbc");
             if (!r.success()) {
@@ -137,15 +137,20 @@ public class KernelActivity extends PreferenceActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
         int mPluggedIn = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);;
-    	
-        if (mPluggedIn == 0) {
-            mSBCPref.setEnabled(true);
-            mSBCPref.setSummary(R.string.kernel_sbc_summary);
-        } else {
+
+        if (sbcExists) {
+            if (mPluggedIn == 0) {
+                mSBCPref.setEnabled(true);
+                mSBCPref.setSummary(R.string.kernel_sbc_summary);
+            } else {
+                mSBCPref.setEnabled(false);
+                mSBCPref.setSummary(R.string.kernel_charging);
+            }
+                 Log.d(TAG, "RECEIVED: " + intent.toString());
+        } else if (!sbcExists) {
             mSBCPref.setEnabled(false);
-            mSBCPref.setSummary(R.string.kernel_charging);
+            mSBCPref.setSummary(R.string.unsupported_feature);
         }
-            Log.d(TAG, "RECEIVED: " + intent.toString());
         }
     };
 }

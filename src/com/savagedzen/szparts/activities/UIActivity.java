@@ -35,12 +35,12 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
     private PreferenceScreen mPowerWidgetScreen;
 
     private static final String POWER_WIDGET_SCREEN = "pref_power_widget";
-    private static final String LCDD_PREF = "pref_lcdd";
-    private static final String LCDD_PROP = "ro.sf.lcd_density";
-    private static final String LCDD_PERSIST_PROP = "persist.sys.lcd_density";
-    private static final String LCDD_DEFAULT = "240";
+//    private static final String LCDD_PREF = "pref_lcdd";
+//    private static final String LCDD_PROP = "ro.sf.lcd_density";
+//    private static final String LCDD_PERSIST_PROP = "persist.sys.lcd_density";
+//    private static final String LCDD_DEFAULT = "240";
   
-    private EditTextPreference mLcddPref;
+//    private EditTextPreference mLcddPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,21 +55,21 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
 	mPowerWidgetScreen = (PreferenceScreen) prefSet.findPreference(POWER_WIDGET_SCREEN);
 
    	/* LCD Density Changer */
-	mLcddPref = (EditTextPreference) prefSet.findPreference(LCDD_PREF);
-        mLcddPref.setText(SystemProperties.get(LCDD_PROP,
-                SystemProperties.get(LCDD_PERSIST_PROP, LCDD_DEFAULT)));
-        mLcddPref.setOnPreferenceChangeListener(this); 
+//        mLcddPref = (EditTextPreference) prefSet.findPreference(LCDD_PREF);
+//        mLcddPref.setText(SystemProperties.get(LCDD_PROP,
+//                SystemProperties.get(LCDD_PERSIST_PROP, LCDD_DEFAULT)));
+//        mLcddPref.setOnPreferenceChangeListener(this); 
 
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mLcddPref) {
-            if (newValue != null) {
-                SystemProperties.set(LCDD_PERSIST_PROP, (String)newValue);
-                return true;
-	    }
-        }
+//        if (preference == mLcddPref) {
+//            if (newValue != null) {
+//                SystemProperties.set(LCDD_PERSIST_PROP, (String)newValue);
+//                return true;
+//	    }
+//        }
 	return false;
     }
 	
