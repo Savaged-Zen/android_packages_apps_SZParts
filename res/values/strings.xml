@@ -45,7 +45,7 @@
     <!-- Kernel strings -->
     <string name="kernel_title">Kernel settings</string>
     <string name="kernel_summary">Adjust kernel-specific values</string>
-    <string name="kernel_advanced_title">Advanced kernel options</string>
+    <string name="kernel_advanced_title">Advanced HAVS options</string>
     <string name="kernel_advanced_summary">WARNING: ONLY FOR ADVANCED USERS\nSet custom HAVS levels</string>
     <string name="havs_title">HAVS settings</string>
     <string name="havs_summary">Adjust HAVS Undervolt settings</string>
