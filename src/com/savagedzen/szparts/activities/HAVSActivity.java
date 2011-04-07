@@ -31,9 +31,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -45,6 +47,7 @@ public class HAVSActivity extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
 
     private static final String UV_PATH = "/sys/devices/system/cpu/cpu0/cpufreq/vdd_levels_havs";
+    private static final String FREQ_LIST_FILE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies"; 
 
     public static final String UV_PREF = "pref_uv";
     public static final String PROFILES_PREF = "pref_uv_profiles";
@@ -69,9 +72,11 @@ public class HAVSActivity extends PreferenceActivity implements
     private ListPreference mProfiles;
 
     private CheckBoxPreference mUseCustom;
-   // private CheckBoxPreference mSOB;
+    private CheckBoxPreference mSOB;
 
     private AlertDialog alertDialog;
+
+    private String[] availableFrequencies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +87,7 @@ public class HAVSActivity extends PreferenceActivity implements
 
         String[] availableProfiles = getResources().getStringArray(R.array.values_uv_profiles);
         String[] availableUV = getResources().getStringArray(R.array.values_uv_havs);
+        availableFrequencies = readOneLine(FREQ_LIST_FILE).split(" ");
 
         setTitle(R.string.havs_title);
         addPreferencesFromResource(R.xml.havs_settings);
@@ -91,7 +97,7 @@ public class HAVSActivity extends PreferenceActivity implements
         mAdvancedScreen = (PreferenceScreen) PrefScreen.findPreference(ADVANCED_SCREEN);
         mApply = (Preference) PrefScreen.findPreference(APPLY_PREF);
         mUseCustom = (CheckBoxPreference) PrefScreen.findPreference(USE_CUSTOM_PREF);
-       // mSOB = (CheckBoxPreference) PrefScreen.findPreference(SOB_PREF);
+        mSOB = (CheckBoxPreference) PrefScreen.findPreference(SOB_PREF);
 
         // Set up the warning
         alertDialog = new AlertDialog.Builder(this).create();
@@ -205,12 +211,65 @@ public class HAVSActivity extends PreferenceActivity implements
                 Log.d(TAG, "Error " + r.stderr);
                 Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
                 Toast.makeText(this, "Could not set profile, error.", Toast.LENGTH_LONG).show();
-                return true;
+                return false;
             } else {
                 Log.d(TAG, "Successfully executed: " + fileTOrun + "Result: " + r.stdout);
                 Toast.makeText(this, "HAVS settings sucessfully changed!", Toast.LENGTH_LONG).show();
+            }
+
+            // Backup HAVS settings
+            String fileTOwrite = "/data/custom.sh";
+
+            String currentHAVS[] = null;
+            String lineTOwrite = "#!/system/bin/sh";
+        InputStreamReader inputReader = null;
+        StringBuilder data = null;
+        try {
+            data = new StringBuilder(2048);
+            char tmp[] = new char[2048];
+            int numRead;
+            inputReader = new FileReader(UV_PATH);
+            while ((numRead = inputReader.read(tmp)) >= 0) {
+                data.append(tmp, 0, numRead);
+            }
+        } catch (IOException e) {
+
+        } finally {
+            try {
+                if (inputReader != null) {
+                    inputReader.close();
+                }
+            } catch (IOException e) {
+            }
+        }
+            String currentHAVSstring = data.toString();
+            currentHAVSstring.replaceAll("\\n", " ");
+            currentHAVS = currentHAVSstring.split("\\D+");
+
+            try {
+                BufferedWriter bw = new BufferedWriter(new FileWriter(fileTOwrite));
+                try {
+                    bw.write("#!/system/bin/sh");
+                    bw.newLine(); 
+                    Log.i(TAG, "Total entries to write: " + currentHAVS.length);
+                    int placement = 0;
+                    for (int i = 1; i < (currentHAVS.length / 3); i++) {
+                        placement = placement + 3;
+                        String stringBuild = "echo " + currentHAVS[1 + placement] + " " + currentHAVS[2 + placement]
+                                + " " + currentHAVS[3 + placement] + " > " + UV_PATH;
+                        bw.write(stringBuild);
+                        bw.newLine();
+                    }
+                    bw.flush();
+                } finally {
+                    bw.close();
+                    Log.i(TAG, "Wrote: " + fileTOwrite);
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "Error writing to " + fileTOwrite + ". Exception: ", e);
                 return false;
             }
+
         } else if (tmpProfile == null || tmpUV == null) {
             Log.d(TAG, "No profile or UV level selected!");
             Toast.makeText(this, "No profile and/or Undervolt level selected!", Toast.LENGTH_LONG).show();
@@ -234,21 +293,5 @@ public class HAVSActivity extends PreferenceActivity implements
             Log.e(TAG, "IO Exception when reading /sys/ file", e);
         }
         return line;
-    }
-
-    public static boolean writeOneLine(String fname, String value) {
-        try {
-            FileWriter fw = new FileWriter(fname);
-            try {
-                fw.write(value);
-            } finally {
-                fw.close();
-            }
-        } catch (IOException e) {
-            String Error = "Error writing to " + fname + ". Exception: ";
-            Log.e(TAG, Error, e);
-            return false;
-        }
-        return true;
     }
 }

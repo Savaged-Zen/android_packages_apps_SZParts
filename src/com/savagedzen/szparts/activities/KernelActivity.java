@@ -46,7 +46,7 @@ public class KernelActivity extends PreferenceActivity {
     private static final String TAG = "KernelSettings";
 
     private boolean vddExists = new File("/system/etc/vdd_profiles").exists();
-    private boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc").exists();
+    private boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc.bak").exists();
 
     private PreferenceScreen mHAVSScreen;
     private CheckBoxPreference mSBCPref;
@@ -66,6 +66,7 @@ public class KernelActivity extends PreferenceActivity {
 
 	IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 	registerReceiver(battery_receiver, filter);
+        // NEED TO UNREGISTER FOR LEAK
 
         if (vddExists) {
             mHAVSScreen.setEnabled(true);
@@ -77,12 +78,10 @@ public class KernelActivity extends PreferenceActivity {
 
         if (sbcExists) {
             mSBCPref.setEnabled(true);
-            //SystemProperties.set("sys.kernel.sbc", "true");
             mSBCPref.setSummary(R.string.kernel_sbc_summary);
             changeSBC(mSBCPref.isChecked());
         } else if (!sbcExists) {  
             mSBCPref.setEnabled(false);
-            //SystemProperties.set("sys.kernel.sbc", "false");
             mSBCPref.setSummary(R.string.unsupported_feature);
         }
     }

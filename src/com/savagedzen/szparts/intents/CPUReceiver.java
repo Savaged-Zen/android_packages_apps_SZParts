@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 The CyanogenMod Project
+ * Copyright (C) 2011 Savaged-Zen
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +17,9 @@
 
 package com.savagedzen.szparts.intents;
 
+import com.savagedzen.szparts.utils.ShellCommand;
+import com.savagedzen.szparts.utils.ShellCommand.CommandResult;
+import com.savagedzen.szparts.activities.HAVSActivity;
 import com.savagedzen.szparts.activities.CPUActivity;
 
 import android.content.BroadcastReceiver;
@@ -25,6 +29,9 @@ import android.content.SharedPreferences;
 import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
+
+import java.io.File;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +41,7 @@ public class CPUReceiver extends BroadcastReceiver {
     private static final String TAG = "CPUSettings";
 
     private static final String CPU_SETTINGS_PROP = "sys.cpufreq.restored";
+    private static final String HAVS_SETTINGS_PROP = "sys.havs.restored";
 
     @Override
     public void onReceive(Context ctx, Intent intent) {
@@ -44,13 +52,21 @@ public class CPUReceiver extends BroadcastReceiver {
         } else {
             SystemProperties.set(CPU_SETTINGS_PROP, "false");
         }
+
+        if (SystemProperties.getBoolean(HAVS_SETTINGS_PROP, false) == false
+                && intent.getAction().equals(Intent.ACTION_MEDIA_MOUNTED)) {
+            SystemProperties.set(HAVS_SETTINGS_PROP, "true");
+            configureHAVS(ctx);
+        } else {
+            SystemProperties.set(HAVS_SETTINGS_PROP, "false");
+        }
     }
 
     private void configureCPU(Context ctx) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
 
         if (prefs.getBoolean(CPUActivity.SOB_PREF, false) == false) {
-            Log.i(TAG, "Restore disabled by user preference.");
+            Log.i(TAG, "CPU restore disabled by user preference.");
             return;
         }
 
@@ -76,6 +92,41 @@ public class CPUReceiver extends BroadcastReceiver {
                 CPUActivity.writeOneLine(CPUActivity.FREQ_MIN_FILE, minFrequency);
             }
             Log.d(TAG, "CPU settings restored.");
+        }
+    }
+
+    private void configureHAVS(Context ctx) {
+        ShellCommand cmd = new ShellCommand();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
+        String fileTOrun = "/data/custom.sh";
+        boolean havsExists = new File(fileTOrun).exists();
+
+        if (prefs.getBoolean(HAVSActivity.SOB_PREF, false) == false) {
+            Log.i(TAG, "HAVS restore disabled by user preference.");
+            Toast.makeText(ctx, "HAVS restore disabled by user preference.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (havsExists) {
+            CommandResult r = cmd.su.runWaitFor("chmod 0744 " + fileTOrun);
+            if (!r.success()) {
+                Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
+                Toast.makeText(ctx, "Could not set permissions.", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d(TAG, "Permissions set " + fileTOrun + "Result: " + r.stdout);
+                Toast.makeText(ctx, "HAVS settings sucessfully set permissions", Toast.LENGTH_LONG).show();
+            }
+            r = cmd.su.runWaitFor(fileTOrun);
+            if (!r.success()) {
+                Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
+                Toast.makeText(ctx, "Could not restore backup, error.", Toast.LENGTH_LONG).show();
+            } else {
+                Log.d(TAG, "Successfully executed: " + fileTOrun + "Result: " + r.stdout);
+                Toast.makeText(ctx, "HAVS settings sucessfully restored!", Toast.LENGTH_LONG).show();
+            }
+        } else if (!havsExists) {
+            Log.d(TAG, "No HAVS backup to restore");
+            Toast.makeText(ctx, "You do not have a backup to restore!", Toast.LENGTH_LONG).show();
         }
     }
 }
