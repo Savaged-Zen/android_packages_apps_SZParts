@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 Savaged-Zen
+ *     Author: Mike Wielgosz <mwielgosz@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,7 +67,6 @@ public class KernelActivity extends PreferenceActivity {
 
 	IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 	registerReceiver(battery_receiver, filter);
-        // NEED TO UNREGISTER FOR LEAK
 
         if (vddExists) {
             mHAVSScreen.setEnabled(true);
@@ -130,6 +130,19 @@ public class KernelActivity extends PreferenceActivity {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterReceiver(battery_receiver);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+	IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+	registerReceiver(battery_receiver, filter);
     }
 
     private BroadcastReceiver battery_receiver = new BroadcastReceiver() {

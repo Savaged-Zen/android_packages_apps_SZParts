@@ -19,7 +19,7 @@
   <Preference android:key="pref_apply" android:title="Apply" />
 
 
-  <CheckBoxPreference android:key="pref_set_uv_on_boot"
+  <CheckBoxPreference android:key="pref_set_on_boot_havs"
                       android:title="@string/uv_set_on_boot_title" android:summary="@string/uv_set_on_boot_summary"/>
 
 </PreferenceCategory>

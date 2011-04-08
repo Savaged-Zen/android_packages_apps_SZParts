@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2011 Savaged-Zen
+ *     Author: Mike Wielgosz <mwielgosz@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +54,7 @@ public class HAVSActivity extends PreferenceActivity implements
     public static final String PROFILES_PREF = "pref_uv_profiles";
     public static final String USE_CUSTOM_PREF = "pref_uv_use_custom";
     public static final String UV_CUSTOM_PREF = "pref_uv_custom";
-    public static final String SOB_PREF = "pref_set_on_boot";
+    public static final String HAVS_SOB_PREF = "pref_set_on_boot_havs";
     public static final String ADVANCED_SCREEN = "KernelAdvancedActivity";
     public static final String APPLY_PREF = "pref_apply";
 
@@ -97,7 +98,7 @@ public class HAVSActivity extends PreferenceActivity implements
         mAdvancedScreen = (PreferenceScreen) PrefScreen.findPreference(ADVANCED_SCREEN);
         mApply = (Preference) PrefScreen.findPreference(APPLY_PREF);
         mUseCustom = (CheckBoxPreference) PrefScreen.findPreference(USE_CUSTOM_PREF);
-        mSOB = (CheckBoxPreference) PrefScreen.findPreference(SOB_PREF);
+        mSOB = (CheckBoxPreference) PrefScreen.findPreference(HAVS_SOB_PREF);
 
         // Set up the warning
         alertDialog = new AlertDialog.Builder(this).create();
@@ -218,7 +219,7 @@ public class HAVSActivity extends PreferenceActivity implements
             }
 
             // Backup HAVS settings
-            String fileTOwrite = "/data/custom.sh";
+            String fileTOwrite = "/data/data/com.savagedzen.szparts/files/custom.sh";
 
             String currentHAVS[] = null;
             String lineTOwrite = "#!/system/bin/sh";

@@ -45,20 +45,20 @@ public class CPUReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context ctx, Intent intent) {
-        if (SystemProperties.getBoolean(CPU_SETTINGS_PROP, false) == false
-                && intent.getAction().equals(Intent.ACTION_MEDIA_MOUNTED)) {
-            SystemProperties.set(CPU_SETTINGS_PROP, "true");
-            configureCPU(ctx);
-        } else {
-            SystemProperties.set(CPU_SETTINGS_PROP, "false");
-        }
 
-        if (SystemProperties.getBoolean(HAVS_SETTINGS_PROP, false) == false
-                && intent.getAction().equals(Intent.ACTION_MEDIA_MOUNTED)) {
-            SystemProperties.set(HAVS_SETTINGS_PROP, "true");
-            configureHAVS(ctx);
-        } else {
-            SystemProperties.set(HAVS_SETTINGS_PROP, "false");
+        if (intent.getAction().equals(Intent.ACTION_MEDIA_MOUNTED)) {
+            if (SystemProperties.getBoolean(CPU_SETTINGS_PROP, false) == false) {
+                SystemProperties.set(CPU_SETTINGS_PROP, "true");
+                configureCPU(ctx);
+            } else {
+                SystemProperties.set(CPU_SETTINGS_PROP, "false");
+            }
+            if (SystemProperties.getBoolean(HAVS_SETTINGS_PROP, false) == false) {
+                SystemProperties.set(HAVS_SETTINGS_PROP, "true");
+                configureHAVS(ctx);
+            } else {
+                SystemProperties.set(HAVS_SETTINGS_PROP, "false");
+            }
         }
     }
 
@@ -98,16 +98,15 @@ public class CPUReceiver extends BroadcastReceiver {
     private void configureHAVS(Context ctx) {
         ShellCommand cmd = new ShellCommand();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        String fileTOrun = "/data/custom.sh";
+        String fileTOrun = "/data/data/com.savagedzen.szparts/files/custom.sh";
         boolean havsExists = new File(fileTOrun).exists();
 
-        if (prefs.getBoolean(HAVSActivity.SOB_PREF, false) == false) {
+        if (prefs.getBoolean(HAVSActivity.HAVS_SOB_PREF, false) == false) {
             Log.i(TAG, "HAVS restore disabled by user preference.");
             Toast.makeText(ctx, "HAVS restore disabled by user preference.", Toast.LENGTH_LONG).show();
             return;
         }
-
-        if (havsExists) {
+        if (havsExists && prefs.getBoolean(HAVSActivity.HAVS_SOB_PREF, false) == true) {
             CommandResult r = cmd.su.runWaitFor("chmod 0744 " + fileTOrun);
             if (!r.success()) {
                 Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
@@ -124,9 +123,11 @@ public class CPUReceiver extends BroadcastReceiver {
                 Log.d(TAG, "Successfully executed: " + fileTOrun + "Result: " + r.stdout);
                 Toast.makeText(ctx, "HAVS settings sucessfully restored!", Toast.LENGTH_LONG).show();
             }
-        } else if (!havsExists) {
+            return;
+        } else {
             Log.d(TAG, "No HAVS backup to restore");
             Toast.makeText(ctx, "You do not have a backup to restore!", Toast.LENGTH_LONG).show();
+            return;
         }
     }
 }
