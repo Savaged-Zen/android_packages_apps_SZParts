@@ -103,31 +103,23 @@ public class CPUReceiver extends BroadcastReceiver {
 
         if (prefs.getBoolean(HAVSActivity.HAVS_SOB_PREF, false) == false) {
             Log.i(TAG, "HAVS restore disabled by user preference.");
-            Toast.makeText(ctx, "HAVS restore disabled by user preference.", Toast.LENGTH_LONG).show();
             return;
         }
-        if (havsExists && prefs.getBoolean(HAVSActivity.HAVS_SOB_PREF, false) == true) {
+        if (havsExists) {
             CommandResult r = cmd.su.runWaitFor("chmod 0744 " + fileTOrun);
             if (!r.success()) {
-                Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
-                Toast.makeText(ctx, "Could not set permissions.", Toast.LENGTH_LONG).show();
+                Log.e(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
             } else {
-                Log.d(TAG, "Permissions set " + fileTOrun + "Result: " + r.stdout);
-                Toast.makeText(ctx, "HAVS settings sucessfully set permissions", Toast.LENGTH_LONG).show();
+                Log.i(TAG, "Permissions set on: " + fileTOrun);
             }
             r = cmd.su.runWaitFor(fileTOrun);
             if (!r.success()) {
-                Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
-                Toast.makeText(ctx, "Could not restore backup, error.", Toast.LENGTH_LONG).show();
+                Log.e(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
             } else {
-                Log.d(TAG, "Successfully executed: " + fileTOrun + "Result: " + r.stdout);
-                Toast.makeText(ctx, "HAVS settings sucessfully restored!", Toast.LENGTH_LONG).show();
+                Log.i(TAG, "Successfully executed script: " + fileTOrun);
             }
-            return;
         } else {
-            Log.d(TAG, "No HAVS backup to restore");
-            Toast.makeText(ctx, "You do not have a backup to restore!", Toast.LENGTH_LONG).show();
-            return;
+            Log.e(TAG, "No HAVS backup to restore");
         }
     }
 }

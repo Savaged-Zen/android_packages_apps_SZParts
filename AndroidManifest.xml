@@ -70,12 +70,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-	<activity android:name=".activities.KernelAdvancedActivity"
-            android:label="@string/kernel_advanced_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
 
         <provider android:name=".provider.SettingsProvider"
             android:authorities="com.savagedzen.szparts.provider.Settings" />

@@ -110,10 +110,10 @@ public class KernelActivity extends PreferenceActivity {
             SystemProperties.set("sys.kernel.sbc", "true");
             CommandResult r = cmd.sh.runWaitFor("echo 1 > /sys/kernel/batt_options/sbc/sysctl_batt_sbc");
             if (!r.success()) {
-                Log.d(TAG, "Starting SBC returned error: " + r.stderr);
+                Log.e(TAG, "Starting SBC returned error: " + r.stderr);
                 Toast.makeText(this, "Error starting SBC", Toast.LENGTH_SHORT).show();
             } else {
-                Log.d(TAG, "SBC successfully started! Result: " + r.stdout);
+                Log.i(TAG, "SBC successfully started!");
                 Toast.makeText(this, "SBC successfully started!", Toast.LENGTH_SHORT).show();
             }
             return true;
@@ -121,10 +121,10 @@ public class KernelActivity extends PreferenceActivity {
             SystemProperties.set("sys.kernel.sbc", "false");
             CommandResult r = cmd.sh.runWaitFor("echo 0 > /sys/kernel/batt_options/sbc/sysctl_batt_sbc");
             if (!r.success()) {
-                Log.d(TAG, "Starting SBC returned error: " + r.stderr);
+                Log.e(TAG, "Starting SBC returned error: " + r.stderr);
                 Toast.makeText(this, "Error starting SBC", Toast.LENGTH_SHORT).show();
             } else {
-                Log.d(TAG, "SBC successfully stopped! Result: " + r.stdout);
+                Log.i(TAG, "SBC successfully stopped!");
                 Toast.makeText(this, "SBC successfully stopped!", Toast.LENGTH_SHORT).show();
             }
             return true;

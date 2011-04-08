@@ -52,10 +52,7 @@ public class HAVSActivity extends PreferenceActivity implements
 
     public static final String UV_PREF = "pref_uv";
     public static final String PROFILES_PREF = "pref_uv_profiles";
-    public static final String USE_CUSTOM_PREF = "pref_uv_use_custom";
-    public static final String UV_CUSTOM_PREF = "pref_uv_custom";
     public static final String HAVS_SOB_PREF = "pref_set_on_boot_havs";
-    public static final String ADVANCED_SCREEN = "KernelAdvancedActivity";
     public static final String APPLY_PREF = "pref_apply";
 
     private static final String TAG = "HAVSSettings";
@@ -65,14 +62,11 @@ public class HAVSActivity extends PreferenceActivity implements
     private String mUVFormat;
     private String mProfileFormat;
 
-    private PreferenceScreen mAdvancedScreen;
-
     private Preference mApply;
 
     private ListPreference mUndervolt;
     private ListPreference mProfiles;
 
-    private CheckBoxPreference mUseCustom;
     private CheckBoxPreference mSOB;
 
     private AlertDialog alertDialog;
@@ -95,9 +89,7 @@ public class HAVSActivity extends PreferenceActivity implements
 
         PreferenceScreen PrefScreen = getPreferenceScreen();
 
-        mAdvancedScreen = (PreferenceScreen) PrefScreen.findPreference(ADVANCED_SCREEN);
         mApply = (Preference) PrefScreen.findPreference(APPLY_PREF);
-        mUseCustom = (CheckBoxPreference) PrefScreen.findPreference(USE_CUSTOM_PREF);
         mSOB = (CheckBoxPreference) PrefScreen.findPreference(HAVS_SOB_PREF);
 
         // Set up the warning
@@ -111,12 +103,6 @@ public class HAVSActivity extends PreferenceActivity implements
         });
 
         alertDialog.show();
-
-        if (mUseCustom.isChecked()) {
-            mAdvancedScreen.setEnabled(true);
-        } else if (!mUseCustom.isChecked()) {
-            mAdvancedScreen.setEnabled(false);
-        }
 
         // UV Profiles radio-list
         mProfiles = (ListPreference) PrefScreen.findPreference(PROFILES_PREF);
@@ -169,16 +155,6 @@ public class HAVSActivity extends PreferenceActivity implements
                 return true;
         }
 
-        if (preference == mUseCustom) {
-            value = mUseCustom.isChecked();
-            if (value) {
-                mAdvancedScreen.setEnabled(true);
-                return true;
-            } else if (!value) {
-                mAdvancedScreen.setEnabled(false);
-                return true;
-            }
-        }
         return false;
     }
 
@@ -209,12 +185,12 @@ public class HAVSActivity extends PreferenceActivity implements
             fileTOrun = filePath + tmpUV + tmpProfile + ".sh";
             CommandResult r = cmd.su.runWaitFor(fileTOrun);
             if (!r.success()) {
-                Log.d(TAG, "Error " + r.stderr);
-                Log.d(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
-                Toast.makeText(this, "Could not set profile, error.", Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Error " + r.stderr);
+                Log.e(TAG, "File: " + fileTOrun + " returned error: " + r.stderr);
+                Toast.makeText(this, "Error: Could not run script: " + tmpUV + tmpProfile, Toast.LENGTH_LONG).show();
                 return false;
             } else {
-                Log.d(TAG, "Successfully executed: " + fileTOrun + "Result: " + r.stdout);
+                Log.i(TAG, "Successfully executed: " + fileTOrun);
                 Toast.makeText(this, "HAVS settings sucessfully changed!", Toast.LENGTH_LONG).show();
             }
 
@@ -223,26 +199,27 @@ public class HAVSActivity extends PreferenceActivity implements
 
             String currentHAVS[] = null;
             String lineTOwrite = "#!/system/bin/sh";
-        InputStreamReader inputReader = null;
-        StringBuilder data = null;
-        try {
-            data = new StringBuilder(2048);
-            char tmp[] = new char[2048];
-            int numRead;
-            inputReader = new FileReader(UV_PATH);
-            while ((numRead = inputReader.read(tmp)) >= 0) {
-                data.append(tmp, 0, numRead);
-            }
-        } catch (IOException e) {
-
-        } finally {
+            InputStreamReader inputReader = null;
+            StringBuilder data = null;
             try {
-                if (inputReader != null) {
-                    inputReader.close();
+                data = new StringBuilder(2048);
+                char tmp[] = new char[2048];
+                int numRead;
+                inputReader = new FileReader(UV_PATH);
+                while ((numRead = inputReader.read(tmp)) >= 0) {
+                    data.append(tmp, 0, numRead);
                 }
             } catch (IOException e) {
+                Log.e(TAG, "IOException: " + e);
+            } finally {
+                try {
+                    if (inputReader != null) {
+                        inputReader.close();
+                    }
+                } catch (IOException e) {
+                    Log.e(TAG, "IOException: " + e);
+                }
             }
-        }
             String currentHAVSstring = data.toString();
             currentHAVSstring.replaceAll("\\n", " ");
             currentHAVS = currentHAVSstring.split("\\D+");
@@ -252,7 +229,6 @@ public class HAVSActivity extends PreferenceActivity implements
                 try {
                     bw.write("#!/system/bin/sh");
                     bw.newLine(); 
-                    Log.i(TAG, "Total entries to write: " + currentHAVS.length);
                     int placement = 0;
                     for (int i = 1; i < (currentHAVS.length / 3); i++) {
                         placement = placement + 3;
@@ -267,12 +243,13 @@ public class HAVSActivity extends PreferenceActivity implements
                     Log.i(TAG, "Wrote: " + fileTOwrite);
                 }
             } catch (IOException e) {
-                Log.e(TAG, "Error writing to " + fileTOwrite + ". Exception: ", e);
+                Log.e(TAG, "Error: Cannot write file: " + fileTOwrite + " Exception: ", e);
+                Log.e(TAG, "IOException: ", e);
                 return false;
             }
 
         } else if (tmpProfile == null || tmpUV == null) {
-            Log.d(TAG, "No profile or UV level selected!");
+            Log.e(TAG, "No profile or UV level selected");
             Toast.makeText(this, "No profile and/or Undervolt level selected!", Toast.LENGTH_LONG).show();
             return false;
         }

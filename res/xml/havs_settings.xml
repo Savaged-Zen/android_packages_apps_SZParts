@@ -20,22 +20,7 @@
 
 
   <CheckBoxPreference android:key="pref_set_on_boot_havs"
-                      android:title="@string/uv_set_on_boot_title" android:summary="@string/uv_set_on_boot_summary"/>
+                      android:title="@string/uv_set_on_boot_title" android:summary="@string/uv_set_on_boot_summary" />
 
-</PreferenceCategory>
-
-<PreferenceCategory android:key="cat_kernel_advanced" android:title="Advanced Options">
-
-  <CheckBoxPreference android:key="pref_uv_use_custom"
-                      android:title="@string/uv_use_custom_title" android:summary="@string/uv_use_custom_summary"/>
-
-  <!-- Advanced Kernel Settings -->
-  <PreferenceScreen android:key="KernelAdvancedActivity"
-        android:title="@string/kernel_advanced_title"
-        android:summary="@string/kernel_advanced_summary" >
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.savagedzen.szparts"
-            android:targetClass="com.savagedzen.szparts.activities.KernelAdvancedActivity" />
-  </PreferenceScreen>
 </PreferenceCategory>
 </PreferenceScreen>

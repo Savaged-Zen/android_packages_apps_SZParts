@@ -15,6 +15,5 @@
   <CheckBoxPreference android:key="pref_sbc"
                       android:title="@string/kernel_sbc_title" android:summary="@string/kernel_sbc_summary"/>
 
-
 </PreferenceCategory>
 </PreferenceScreen>
