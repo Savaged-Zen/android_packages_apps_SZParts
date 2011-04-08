@@ -98,7 +98,7 @@ public class CPUReceiver extends BroadcastReceiver {
     private void configureHAVS(Context ctx) {
         ShellCommand cmd = new ShellCommand();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
-        String fileTOrun = "/data/data/com.savagedzen.szparts/files/custom.sh";
+        String fileTOrun = "/data/customHAVS.sh";
         boolean havsExists = new File(fileTOrun).exists();
 
         if (prefs.getBoolean(HAVSActivity.HAVS_SOB_PREF, false) == false) {

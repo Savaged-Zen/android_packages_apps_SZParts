@@ -219,7 +219,7 @@ public class HAVSActivity extends PreferenceActivity implements
             }
 
             // Backup HAVS settings
-            String fileTOwrite = "/data/data/com.savagedzen.szparts/files/custom.sh";
+            String fileTOwrite = "/data/customHAVS.sh";
 
             String currentHAVS[] = null;
             String lineTOwrite = "#!/system/bin/sh";
