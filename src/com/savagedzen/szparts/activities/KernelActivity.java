@@ -46,7 +46,7 @@ public class KernelActivity extends PreferenceActivity {
     private static final String TAG = "KernelSettings";
 
     private boolean vddExists = new File("/system/etc/vdd_profiles").exists();
-    private boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc.bak").exists();
+    private boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc").exists();
 
     private PreferenceScreen mHAVSScreen;
     private CheckBoxPreference mSBCPref;
@@ -79,7 +79,7 @@ public class KernelActivity extends PreferenceActivity {
         if (sbcExists) {
             mSBCPref.setEnabled(true);
             mSBCPref.setSummary(R.string.kernel_sbc_summary);
-            changeSBC(mSBCPref.isChecked());
+            mSBCPref.isChecked();
         } else if (!sbcExists) {  
             mSBCPref.setEnabled(false);
             mSBCPref.setSummary(R.string.unsupported_feature);
@@ -113,8 +113,8 @@ public class KernelActivity extends PreferenceActivity {
                 Log.d(TAG, "Starting SBC returned error: " + r.stderr);
                 Toast.makeText(this, "Error starting SBC", Toast.LENGTH_SHORT).show();
             } else {
-                Log.d(TAG, "SBC sucessfully started! Result: " + r.stdout);
-                Toast.makeText(this, "SBC sucessfully started!", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "SBC successfully started! Result: " + r.stdout);
+                Toast.makeText(this, "SBC successfully started!", Toast.LENGTH_SHORT).show();
             }
             return true;
         } else if (!onOFF) {
@@ -124,8 +124,8 @@ public class KernelActivity extends PreferenceActivity {
                 Log.d(TAG, "Starting SBC returned error: " + r.stderr);
                 Toast.makeText(this, "Error starting SBC", Toast.LENGTH_SHORT).show();
             } else {
-                Log.d(TAG, "SBC sucessfully stopped! Result: " + r.stdout);
-                Toast.makeText(this, "SBC sucessfully stopped!", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "SBC successfully stopped! Result: " + r.stdout);
+                Toast.makeText(this, "SBC successfully stopped!", Toast.LENGTH_SHORT).show();
             }
             return true;
         }
