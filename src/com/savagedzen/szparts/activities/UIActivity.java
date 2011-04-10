@@ -35,6 +35,10 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
     private PreferenceScreen mPowerWidgetScreen;
 
     private static final String POWER_WIDGET_SCREEN = "pref_power_widget";
+
+    private static final String USE_SCREENOFF_ANIM = "pref_use_screenoff_anim";
+    private static final String USE_SCREENON_ANIM = "pref_use_screenon_anim";
+
 //    private static final String LCDD_PREF = "pref_lcdd";
 //    private static final String LCDD_PROP = "ro.sf.lcd_density";
 //    private static final String LCDD_PERSIST_PROP = "persist.sys.lcd_density";
@@ -42,13 +46,9 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
   
 //    private EditTextPreference mLcddPref;
       
-     private static final String ELECTRON_BEAM_ANIMATION_ON = "electron_beam_animation_on";
+      private CheckBoxPreference mUseScreenOnAnim;
+      private CheckBoxPreference mUseScreenOffAnim;
 
-     private static final String ELECTRON_BEAM_ANIMATION_OFF = "electron_beam_animation_off";
-
-     private CheckBoxPreference mElectronBeamAnimationOn;
-
-     private CheckBoxPreference mElectronBeamAnimationOff;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,19 +69,13 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
 //        mLcddPref.setOnPreferenceChangeListener(this); 
 
         /* Electron Beam control */
-        boolean animateScreenLights = getResources().getBoolean(
-                com.android.internal.R.bool.config_animateScreenLights);
-        mElectronBeamAnimationOn = (CheckBoxPreference)prefSet.findPreference(ELECTRON_BEAM_ANIMATION_ON);
-        mElectronBeamAnimationOn.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.ELECTRON_BEAM_ANIMATION_ON, 0) == 1);
-        mElectronBeamAnimationOff = (CheckBoxPreference)prefSet.findPreference(ELECTRON_BEAM_ANIMATION_OFF);
-        mElectronBeamAnimationOff.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.ELECTRON_BEAM_ANIMATION_OFF, 1) == 1);
+		mUseScreenOnAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENON_ANIM);
+		mUseScreenOnAnim.setChecked(Settings.System.getInt(getContentResolver(), 
+						Settings.System.USE_SCREENON_ANIM, 1) == 1);
 
-        /* Hide Electron Beam controls if electron beam is disabled */
-        if (animateScreenLights) {
-            prefSet.removePreference(mElectronBeamAnimationOn);
-            prefSet.removePreference(mElectronBeamAnimationOff);
+		mUseScreenOffAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENOFF_ANIM);
+		mUseScreenOffAnim.setChecked(Settings.System.getInt(getContentResolver(), 
+						Settings.System.USE_SCREENOFF_ANIM, 1) == 1);
         }
     }
 
@@ -100,19 +94,13 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         // Opens Notification Power Widget Options		
         if (preference == mPowerWidgetScreen) {		
             startActivity(mPowerWidgetScreen.getIntent());		
-            return true;		
+      	} else if (preference == mUseScreenOnAnim) {
+    		value = 	mUseScreenOnAnim.isChecked();
+            	Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENON_ANIM, value ? 1 : 0);
+        } else if (preference == mUseScreenOffAnim) {
+        	value = mUseScreenOffAnim.isChecked();
+            	Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENOFF_ANIM, value ? 1 : 0);
         }
-        if (preference == mElectronBeamAnimationOn) {
-            value = mElectronBeamAnimationOn.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.ELECTRON_BEAM_ANIMATION_ON, value ? 1 : 0);
-        }
-        if (preference == mElectronBeamAnimationOff) {
-            value = mElectronBeamAnimationOff.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.ELECTRON_BEAM_ANIMATION_OFF, value ? 1 : 0);
-        }
-
-        return false;
-    }
+        return true;
+      }
 }
