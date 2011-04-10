@@ -23,4 +23,12 @@
         </PreferenceScreen>	
     </PreferenceCategory>
 
+    <!-- Electron Beam toggle -->
+    <PreferenceCategory android:title="@string/pref_electron_beam_title">
+        <CheckBoxPreference android:key="electron_beam_animation_on"
+            android:title="@string/pref_electron_beam_animation_on" />  
+        <CheckBoxPreference android:key="electron_beam_animation_off"
+            android:title="@string/pref_electron_beam_animation_off" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

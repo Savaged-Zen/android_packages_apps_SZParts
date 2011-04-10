@@ -41,6 +41,14 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
 //    private static final String LCDD_DEFAULT = "240";
   
 //    private EditTextPreference mLcddPref;
+      
+     private static final String ELECTRON_BEAM_ANIMATION_ON = "electron_beam_animation_on";
+
+     private static final String ELECTRON_BEAM_ANIMATION_OFF = "electron_beam_animation_off";
+
+     private CheckBoxPreference mElectronBeamAnimationOn;
+
+     private CheckBoxPreference mElectronBeamAnimationOff;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,21 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
 //                SystemProperties.get(LCDD_PERSIST_PROP, LCDD_DEFAULT)));
 //        mLcddPref.setOnPreferenceChangeListener(this); 
 
+        /* Electron Beam control */
+        boolean animateScreenLights = getResources().getBoolean(
+                com.android.internal.R.bool.config_animateScreenLights);
+        mElectronBeamAnimationOn = (CheckBoxPreference)prefSet.findPreference(ELECTRON_BEAM_ANIMATION_ON);
+        mElectronBeamAnimationOn.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.ELECTRON_BEAM_ANIMATION_ON, 0) == 1);
+        mElectronBeamAnimationOff = (CheckBoxPreference)prefSet.findPreference(ELECTRON_BEAM_ANIMATION_OFF);
+        mElectronBeamAnimationOff.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.ELECTRON_BEAM_ANIMATION_OFF, 1) == 1);
+
+        /* Hide Electron Beam controls if electron beam is disabled */
+        if (animateScreenLights) {
+            prefSet.removePreference(mElectronBeamAnimationOn);
+            prefSet.removePreference(mElectronBeamAnimationOff);
+        }
     }
 
     @Override
@@ -79,6 +102,17 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
             startActivity(mPowerWidgetScreen.getIntent());		
             return true;		
         }
+        if (preference == mElectronBeamAnimationOn) {
+            value = mElectronBeamAnimationOn.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.ELECTRON_BEAM_ANIMATION_ON, value ? 1 : 0);
+        }
+        if (preference == mElectronBeamAnimationOff) {
+            value = mElectronBeamAnimationOff.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.ELECTRON_BEAM_ANIMATION_OFF, value ? 1 : 0);
+        }
+
         return false;
     }
 }
