@@ -48,6 +48,8 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
     private CheckBoxPreference mUseScreenOnAnim;
     private CheckBoxPreference mUseScreenOffAnim;
 
+    private static final String TAG = "SZParts";
+    private static final boolean DEBUG = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,4 +88,7 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         }
         return true;
       }
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+     return true;
+    }
 }
