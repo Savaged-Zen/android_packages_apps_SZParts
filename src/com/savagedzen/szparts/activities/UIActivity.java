@@ -65,7 +65,7 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         /* Electron Beam control */
 		mUseScreenOnAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENON_ANIM);
 		mUseScreenOnAnim.setChecked(Settings.System.getInt(getContentResolver(), 
-						Settings.System.USE_SCREENON_ANIM, 1) == 1);
+						Settings.System.USE_SCREENON_ANIM, 0) == 1);
 
 		mUseScreenOffAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENOFF_ANIM);
 		mUseScreenOffAnim.setChecked(Settings.System.getInt(getContentResolver(), 
