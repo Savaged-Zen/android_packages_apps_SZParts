@@ -44,17 +44,9 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
 
     private static final String USE_SCREENOFF_ANIM = "pref_use_screenoff_anim";
     private static final String USE_SCREENON_ANIM = "pref_use_screenon_anim";
-
-//    private static final String LCDD_PREF = "pref_lcdd";
-//    private static final String LCDD_PROP = "ro.sf.lcd_density";
-//    private static final String LCDD_PERSIST_PROP = "persist.sys.lcd_density";
-//    private static final String LCDD_DEFAULT = "240";
-  
-//    private EditTextPreference mLcddPref;
       
-      private CheckBoxPreference mUseScreenOnAnim;
-      private CheckBoxPreference mUseScreenOffAnim;
-
+    private CheckBoxPreference mUseScreenOnAnim;
+    private CheckBoxPreference mUseScreenOffAnim;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,12 +60,6 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         /* Power Widget*/
 	mPowerWidgetScreen = (PreferenceScreen) prefSet.findPreference(POWER_WIDGET_SCREEN);
 
-   	/* LCD Density Changer */
-//        mLcddPref = (EditTextPreference) prefSet.findPreference(LCDD_PREF);
-//        mLcddPref.setText(SystemProperties.get(LCDD_PROP,
-//                SystemProperties.get(LCDD_PERSIST_PROP, LCDD_DEFAULT)));
-//        mLcddPref.setOnPreferenceChangeListener(this); 
-
         /* Electron Beam control */
 		mUseScreenOnAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENON_ANIM);
 		mUseScreenOnAnim.setChecked(Settings.System.getInt(getContentResolver(), 
@@ -82,22 +68,13 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
 		mUseScreenOffAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENOFF_ANIM);
 		mUseScreenOffAnim.setChecked(Settings.System.getInt(getContentResolver(), 
 						Settings.System.USE_SCREENOFF_ANIM, 1) == 1);
-        }
-    }
+       }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-//        if (preference == mLcddPref) {
-//            if (newValue != null) {
-//                SystemProperties.set(LCDD_PERSIST_PROP, (String)newValue);
-//                return true;
-//	    }
-//        }
-	return false;
-    }
-	
+    	
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        // Opens Notification Power Widget Options		
+     boolean value;
+
+		// Opens Notification Power Widget Options		
         if (preference == mPowerWidgetScreen) {		
             startActivity(mPowerWidgetScreen.getIntent());		
       	} else if (preference == mUseScreenOnAnim) {
@@ -107,6 +84,6 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         	value = mUseScreenOffAnim.isChecked();
             	Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENOFF_ANIM, value ? 1 : 0);
         }
-        return false;
+        return true;
       }
 }
