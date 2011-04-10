@@ -72,10 +72,15 @@
     <string name="uv_warning_title">CAUTION! Brick throwing monkeys nearby!</string>
     <string name="uv_warning">We are NOT responsible for what you do with these settings.  It is VERY possibe for you to cause permanent damage or brick your device by improperly setting these values.  Proceed with caution!</string>
 
-    <!-- Electron Beam Animation -->
-    <string name="pref_electron_beam_title">Screen On/Off Animation</string>
-    <string name="pref_electron_beam_animation_on">Screen-on animation</string>
-    <string name="pref_electron_beam_animation_off">Screen-off animation</string>
+    <!-- Screen on animation -->
+    <string name="title_use_screenon_anim">Use Screen On Animation?</string>
+    <string name="summary_on_use_screenon_anim">Screen On Animation will be used</string>
+    <string name="summary_off_use_screenon_anim">Screen On Animation will not be used</string>
+
+    <!-- Screen off animation -->
+    <string name="title_use_screenoff_anim">Use Screen Off Animation?</string>
+    <string name="summary_on_use_screenoff_anim">Screen Off Animation will be used</string>
+    <string name="summary_off_use_screenoff_anim">Screen Off Animation will not be used</string>
 	
     <!-- User Interface : LCD Density Changer -->
     <string name="ui_lcdd_title">LCD Density</string>

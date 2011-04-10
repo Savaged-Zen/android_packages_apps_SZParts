@@ -21,14 +21,19 @@
                android:targetPackage="com.savagedzen.szparts"
                android:targetClass="com.savagedzen.szparts.activities.UIPowerWidgetActivity" />
         </PreferenceScreen>	
-    </PreferenceCategory>
+        <CheckBoxPreference
+	  android:key="pref_use_screenon_anim"
+	  android:title="@string/title_use_screenon_anim"
+	  android:summaryOn="@string/summary_on_use_screenon_anim"
+	  android:summaryOff="@string/summary_off_use_screenon_anim" 
+	  />
 
-    <!-- Electron Beam toggle -->
-    <PreferenceCategory android:title="@string/pref_electron_beam_title">
-        <CheckBoxPreference android:key="electron_beam_animation_on"
-            android:title="@string/pref_electron_beam_animation_on" />  
-        <CheckBoxPreference android:key="electron_beam_animation_off"
-            android:title="@string/pref_electron_beam_animation_off" />
+	<CheckBoxPreference
+	  android:key="pref_use_screenoff_anim"
+	  android:title="@string/title_use_screenoff_anim"
+	  android:summaryOn="@string/summary_on_use_screenoff_anim"
+	  android:summaryOff="@string/summary_off_use_screenoff_anim" 
+	 />
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -17,7 +17,13 @@
 package com.savagedzen.szparts.activities;
 
 import com.savagedzen.szparts.R;
+import com.savagedzen.szparts.R.bool;
+import com.savagedzen.szparts.R.xml;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
@@ -101,6 +107,6 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         	value = mUseScreenOffAnim.isChecked();
             	Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENOFF_ANIM, value ? 1 : 0);
         }
-        return true;
+        return false;
       }
 }
