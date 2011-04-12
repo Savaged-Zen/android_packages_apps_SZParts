@@ -17,39 +17,35 @@
 package com.savagedzen.szparts.activities;
 
 import com.savagedzen.szparts.R;
-import com.savagedzen.szparts.R.bool;
-import com.savagedzen.szparts.R.xml;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.EditTextPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
-public class UIActivity extends PreferenceActivity implements OnPreferenceChangeListener {
 
-    private PreferenceScreen mPowerWidgetScreen;
+public class UIActivity extends PreferenceActivity {
 
-    private static final String POWER_WIDGET_SCREEN = "pref_power_widget";
-
+    private static final String LAUNCHER_SCREEN = "settings_launcher";
+    private static final String POWER_WIDGET_SCREEN = "ui_power_widget_settings_menu";
     private static final String USE_SCREENOFF_ANIM = "pref_use_screenoff_anim";
     private static final String USE_SCREENON_ANIM = "pref_use_screenon_anim";
-      
+
+    private PreferenceScreen mLauncherScreen;
+    private PreferenceScreen mPowerWidgetScreen;
+
     private CheckBoxPreference mUseScreenOnAnim;
     private CheckBoxPreference mUseScreenOffAnim;
 
     private static final String TAG = "SZParts";
-    private static final boolean DEBUG = false;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,37 +54,37 @@ public class UIActivity extends PreferenceActivity implements OnPreferenceChange
         addPreferencesFromResource(R.xml.ui_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
-	
-        /* Power Widget*/
-	mPowerWidgetScreen = (PreferenceScreen) prefSet.findPreference(POWER_WIDGET_SCREEN);
 
-        /* Electron Beam control */
-		mUseScreenOnAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENON_ANIM);
-		mUseScreenOnAnim.setChecked(Settings.System.getInt(getContentResolver(), 
-						Settings.System.USE_SCREENON_ANIM, 0) == 1);
+        mLauncherScreen = (PreferenceScreen) prefSet.findPreference(LAUNCHER_SCREEN);
+        mPowerWidgetScreen = (PreferenceScreen) prefSet.findPreference(POWER_WIDGET_SCREEN);
 
-		mUseScreenOffAnim = (CheckBoxPreference)prefSet.findPreference(USE_SCREENOFF_ANIM);
-		mUseScreenOffAnim.setChecked(Settings.System.getInt(getContentResolver(), 
-						Settings.System.USE_SCREENOFF_ANIM, 1) == 1);
-       }
+        mUseScreenOnAnim = (CheckBoxPreference) prefSet.findPreference(USE_SCREENON_ANIM);
+        mUseScreenOnAnim.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.USE_SCREENON_ANIM, 0) == 1);
 
-    	
+        mUseScreenOffAnim = (CheckBoxPreference) prefSet.findPreference(USE_SCREENOFF_ANIM);
+        mUseScreenOffAnim.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.USE_SCREENOFF_ANIM, 1) == 1);
+    }
+
+    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-     boolean value;
+        boolean value;
 
-		// Opens Notification Power Widget Options		
-        if (preference == mPowerWidgetScreen) {		
-            startActivity(mPowerWidgetScreen.getIntent());		
-      	} else if (preference == mUseScreenOnAnim) {
-    		value = 	mUseScreenOnAnim.isChecked();
-            	Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENON_ANIM, value ? 1 : 0);
-        } else if (preference == mUseScreenOffAnim) {
-        	value = mUseScreenOffAnim.isChecked();
-            	Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENOFF_ANIM, value ? 1 : 0);
+        if (preference == mPowerWidgetScreen) {
+            startActivity(mPowerWidgetScreen.getIntent());
+      	}
+        if (preference == mLauncherScreen) {
+            startActivity(mLauncherScreen.getIntent());
+      	}
+        if (preference == mUseScreenOnAnim) {
+            value = mUseScreenOnAnim.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENON_ANIM, value ? 1 : 0);
+        }
+        if (preference == mUseScreenOffAnim) {
+            value = mUseScreenOffAnim.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENOFF_ANIM, value ? 1 : 0);
         }
         return true;
-      }
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-     return true;
     }
 }

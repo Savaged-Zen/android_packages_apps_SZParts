@@ -29,14 +29,12 @@
             android:label="@string/cpu_settings_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />
             </intent-filter>
         </activity>
         <activity android:name=".activities.UIActivity"		
             android:label="@string/ui_settings_title_head">		
             <intent-filter>		
                 <action android:name="android.intent.action.MAIN" />		
-                <category android:name="com.savagedzen.szparts.SHORTCUT" />		
             </intent-filter>
         </activity>
         <activity android:name=".activities.ChangeLog"
@@ -46,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.LauncherActivity"
-            android:label="LauncherActivity">
+            android:label="@string/settings_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -85,7 +83,6 @@
             android:label="@string/title_expanded_widget">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.salvagemod.salvageparts.SHORTCUT" />
             </intent-filter>
         </activity>
 

@@ -21,19 +21,18 @@
                android:targetPackage="com.savagedzen.szparts"
                android:targetClass="com.savagedzen.szparts.activities.UIPowerWidgetActivity" />
         </PreferenceScreen>	
+
         <CheckBoxPreference
 	  android:key="pref_use_screenon_anim"
 	  android:title="@string/title_use_screenon_anim"
 	  android:summaryOn="@string/summary_on_use_screenon_anim"
-	  android:summaryOff="@string/summary_off_use_screenon_anim" 
-	  />
+	  android:summaryOff="@string/summary_off_use_screenon_anim" />
 
 	<CheckBoxPreference
 	  android:key="pref_use_screenoff_anim"
 	  android:title="@string/title_use_screenoff_anim"
 	  android:summaryOn="@string/summary_on_use_screenoff_anim"
-	  android:summaryOff="@string/summary_off_use_screenoff_anim" 
-	 />
-    </PreferenceCategory>
+	  android:summaryOff="@string/summary_off_use_screenoff_anim" />
 
+    </PreferenceCategory>
 </PreferenceScreen>
