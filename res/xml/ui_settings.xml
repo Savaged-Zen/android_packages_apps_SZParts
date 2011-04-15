@@ -34,5 +34,17 @@
 	  android:summaryOn="@string/summary_on_use_screenoff_anim"
 	  android:summaryOff="@string/summary_off_use_screenoff_anim" />
 
+	<CheckBoxPreference
+	  android:key="pref_theme_compatibility_battery"
+	  android:title="@string/title_theme_compatibility_battery"
+	  android:summaryOn="@string/summary_on_theme_compatibility_battery"
+	  android:summaryOff="@string/summary_off_theme_compatibility_battery" />
+
+	<CheckBoxPreference
+	  android:key="pref_theme_compatibility_signal"
+	  android:title="@string/title_theme_compatibility_signal"
+	  android:summaryOn="@string/summary_on_theme_compatibility_signal"
+	  android:summaryOff="@string/summary_off_theme_compatibility_signal" />
+
     </PreferenceCategory>
 </PreferenceScreen>
