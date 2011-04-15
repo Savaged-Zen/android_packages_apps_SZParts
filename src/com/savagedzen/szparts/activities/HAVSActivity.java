@@ -200,14 +200,14 @@ public class HAVSActivity extends PreferenceActivity implements
             String currentHAVS[] = null;
             String lineTOwrite = "#!/system/bin/sh";
             InputStreamReader inputReader = null;
-            StringBuilder data = null;
+            StringBuilder cacheHAVS = null;
             try {
-                data = new StringBuilder(2048);
+                cacheHAVS = new StringBuilder(2048);
                 char tmp[] = new char[2048];
                 int numRead;
                 inputReader = new FileReader(UV_PATH);
                 while ((numRead = inputReader.read(tmp)) >= 0) {
-                    data.append(tmp, 0, numRead);
+                    cacheHAVS.append(tmp, 0, numRead);
                 }
             } catch (IOException e) {
                 Log.e(TAG, "IOException: " + e);
@@ -220,7 +220,7 @@ public class HAVSActivity extends PreferenceActivity implements
                     Log.e(TAG, "IOException: " + e);
                 }
             }
-            String currentHAVSstring = data.toString();
+            String currentHAVSstring = cacheHAVS.toString();
             currentHAVSstring.replaceAll("\\n", " ");
             currentHAVS = currentHAVSstring.split("\\D+");
 
@@ -243,8 +243,7 @@ public class HAVSActivity extends PreferenceActivity implements
                     Log.i(TAG, "Wrote: " + fileTOwrite);
                 }
             } catch (IOException e) {
-                Log.e(TAG, "Error: Cannot write file: " + fileTOwrite + " Exception: ", e);
-                Log.e(TAG, "IOException: ", e);
+                Log.e(TAG, "Error: Cannot write file: " + fileTOwrite + " IOException: ", e);
                 return false;
             }
 
