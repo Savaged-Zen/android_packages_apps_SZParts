@@ -116,6 +116,12 @@
     <string name="title_expanded_ui">User Interface Settings</string>		
     <string name="summary_expanded_ui">Control appearance of device</string>
     <string name="ui_settings_title_head">User Interface Settings</string>
+    <string name="title_theme_compatibility_battery">Battery theme compatibility</string>
+    <string name="summary_on_theme_compatibility_battery">100 battery tweaks are disabled\nKeeps compatibility with older themes</string>
+    <string name="summary_off_theme_compatibility_battery">100 battery tweaks are disabled\nBetter battery readings for use with new themes</string>
+    <string name="title_theme_compatibility_signal">Signal theme compatibility</string>
+    <string name="summary_on_theme_compatibility_signal">Six bar signal tweaks are disabled\nKeeps compatibility with older themes</string>
+    <string name="summary_off_theme_compatibility_signal">Six bar signal tweaks are enabled\nBetter signal readings for use with new themes</string>
 
     <!-- Expanded View Power Widget -->
     <string name="title_widget_buttons">Expanded View Widget</string>

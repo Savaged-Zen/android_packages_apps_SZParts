@@ -36,12 +36,16 @@ public class UIActivity extends PreferenceActivity {
     private static final String POWER_WIDGET_SCREEN = "ui_power_widget_settings_menu";
     private static final String USE_SCREENOFF_ANIM = "pref_use_screenoff_anim";
     private static final String USE_SCREENON_ANIM = "pref_use_screenon_anim";
+    private static final String THEME_COMPATIBILTY_BATTERY = "pref_theme_compatibility_battery";
+    private static final String THEME_COMPATIBILTY_SIGNAL = "pref_theme_compatibility_signal";
 
     private PreferenceScreen mLauncherScreen;
     private PreferenceScreen mPowerWidgetScreen;
 
     private CheckBoxPreference mUseScreenOnAnim;
     private CheckBoxPreference mUseScreenOffAnim;
+    private CheckBoxPreference mThemeCompatibilityBattery;
+    private CheckBoxPreference mThemeCompatibilitySignal;
 
     private static final String TAG = "SZParts";
 
@@ -65,6 +69,14 @@ public class UIActivity extends PreferenceActivity {
         mUseScreenOffAnim = (CheckBoxPreference) prefSet.findPreference(USE_SCREENOFF_ANIM);
         mUseScreenOffAnim.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.USE_SCREENOFF_ANIM, 1) == 1);
+
+        mThemeCompatibilityBattery = (CheckBoxPreference) prefSet.findPreference(THEME_COMPATIBILTY_BATTERY);
+        mThemeCompatibilityBattery.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.THEME_COMPATIBILITY_BATTERY, 0) == 1);
+
+        mThemeCompatibilitySignal = (CheckBoxPreference) prefSet.findPreference(THEME_COMPATIBILTY_SIGNAL);
+        mThemeCompatibilitySignal.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.THEME_COMPATIBILITY_SIGNAL, 0) == 1);
     }
 
     @Override
@@ -84,6 +96,14 @@ public class UIActivity extends PreferenceActivity {
         if (preference == mUseScreenOffAnim) {
             value = mUseScreenOffAnim.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.USE_SCREENOFF_ANIM, value ? 1 : 0);
+        }
+        if (preference == mThemeCompatibilityBattery) {
+            value = mThemeCompatibilityBattery.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.THEME_COMPATIBILITY_BATTERY, value ? 1 : 0);
+        }
+        if (preference == mThemeCompatibilitySignal) {
+            value = mThemeCompatibilitySignal.isChecked();
+            Settings.System.putInt(getContentResolver(), Settings.System.THEME_COMPATIBILITY_SIGNAL, value ? 1 : 0);
         }
         return true;
     }
