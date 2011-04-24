@@ -97,5 +97,13 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+       
+        <activity android:name=".activities.SoundQuietHoursActivity"
+            android:label="@string/quiet_hours_note_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
     </application>
 </manifest>
