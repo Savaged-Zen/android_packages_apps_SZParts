@@ -20,7 +20,13 @@
                 android:targetPackage="com.savagedzen.szparts"
                 android:targetClass="com.savagedzen.szparts.activities.KernelActivity" />
         </PreferenceScreen>
-        <!-- Change Log -->
+        <!-- Quiet Hours -->
+        <PreferenceScreen android:key="sound_category_quiet_hours" android:title="@string/sound_category_quiet_hours_title">
+            <intent android:action="android.intent.action.MAIN"
+		android:targetPackage="com.savagedzen.szparts"
+		android:targetClass="com.savagedzen.szparts.activities.SoundQuietHoursActivity" />
+	</PreferenceScreen>
+       <!-- Change Log -->
         <PreferenceScreen android:key="changelog"
             android:title="@string/changelog_title">
             <intent android:action="android.intent.action.MAIN"
