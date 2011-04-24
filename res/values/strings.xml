@@ -173,6 +173,7 @@
     
     <!-- Quiet hours -->
     <string name="sound_category_quiet_hours_title">Quiet hours</string>
+    <string name="sound_category_quiet_hours_summary">Set phone to quiet during specified time frame</string>
     <string name="quiet_hours_note_title">Note</string>
     <string name="quiet_hours_note_summary">Incoming calls will behave like usual during quiet hours</string>
     <string name="quiet_hours_enabled">Enable quiet hours</string>
