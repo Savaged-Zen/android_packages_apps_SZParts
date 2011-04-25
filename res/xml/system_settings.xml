@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<PreferenceCategory android:key="cat_kernel" android:title="@string/general_title">
+
+ <!-- Quiet Hours -->
+        <PreferenceScreen android:key="sound_category_quiet_hours" android:title="@string/sound_category_quiet_hours_title" android:summary="@$
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.savagedzen.szparts"
+                android:targetClass="com.savagedzen.szparts.activities.SoundQuietHoursActivity" />
+        </PreferenceScreen>
+</PreferenceCategory>
+</PreferenceScreen>
