@@ -19,46 +19,15 @@ package com.savagedzen.szparts.activities;
 
 import com.savagedzen.szparts.R;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.SystemProperties;
-import android.preference.CheckBoxPreference;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceScreen;
-import android.provider.Settings;
-
 
 public class SystemActivity extends PreferenceActivity {
-
-    private static final String QH_SCREEN = "SoundQuietHoursActivity";
-
-    private PreferenceScreen mQHScreen;
-
-    private static final String TAG = "SZParts";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitle(R.string.system_settings_title_head);
         addPreferencesFromResource(R.xml.system_settings);
-
-        PreferenceScreen prefSet = getPreferenceScreen();
-
-        mQHScreen = (PreferenceScreen) prefSet.findPreference(QH_SCREEN);
-     }
-
-    @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        boolean value;
-
-        if (preference == mQHScreen) {
-            startActivity(mQHScreen.getIntent());
-      	}
-        return true;
     }
 }
