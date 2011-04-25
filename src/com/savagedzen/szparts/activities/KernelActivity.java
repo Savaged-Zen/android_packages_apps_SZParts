@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2011 Savaged-Zen
  *     Author: Mike Wielgosz <mwielgosz@gmail.com>
+ *     Edited by: Joshua Seidel <jsseidel1@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,12 +44,14 @@ import java.io.File;
 public class KernelActivity extends PreferenceActivity {
 
     public static final String HAVS_SCREEN = "HAVSActivity";
+    public static final String CPU_SCREEN = "CPUActivity";
     public static final String SBC_PREF = "pref_sbc";
     private static final String TAG = "KernelSettings";
 
     private boolean vddExists = new File("/system/etc/vdd_profiles").exists();
     private boolean sbcExists = new File("/sys/kernel/batt_options/sbc/sysctl_batt_sbc").exists();
 
+    private PreferenceScreen mCPUScreen;
     private PreferenceScreen mHAVSScreen;
     private CheckBoxPreference mSBCPref;
 
@@ -62,6 +65,7 @@ public class KernelActivity extends PreferenceActivity {
 
         PreferenceScreen PrefScreen = getPreferenceScreen();
 
+	mCPUScreen = (PreferenceScreen) PrefScreen.findPreference(CPU_SCREEN);
         mHAVSScreen = (PreferenceScreen) PrefScreen.findPreference(HAVS_SCREEN);
         mSBCPref= (CheckBoxPreference) PrefScreen.findPreference(SBC_PREF);
 
