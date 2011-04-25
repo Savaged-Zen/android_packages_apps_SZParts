@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<!-- UI Settings -->
-        <PreferenceScreen android:key="ui_settings"
-                android:title="@string/title_expanded_ui"
-                android:summary="@string/summary_expanded_ui">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.savagedzen.szparts"
-                    android:targetClass="com.savagedzen.szparts.activities.UIActivity" />
-        </PreferenceScreen>	
         <!-- CPU Settings -->
         <PreferenceScreen android:key="cpu_settings" android:title="@string/cpu_title" android:summary="@string/cpu_summary">
             <intent android:action="android.intent.action.MAIN"
@@ -25,6 +17,14 @@
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.savagedzen.szparts"
                 android:targetClass="com.savagedzen.szparts.activities.SystemActivity" />
+        </PreferenceScreen>
+        <!-- UI Settings -->
+        <PreferenceScreen android:key="ui_settings"
+                android:title="@string/title_expanded_ui"
+                android:summary="@string/summary_expanded_ui">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.savagedzen.szparts"
+                    android:targetClass="com.savagedzen.szparts.activities.UIActivity" />
         </PreferenceScreen>
        <!-- Change Log -->
         <PreferenceScreen android:key="changelog"
