@@ -186,6 +186,12 @@
     <string name="quiet_hours_dim">Dim LED</string>
     <string name="quiet_hours_dim_on">LED will dim if possible</string>
     <string name="quiet_hours_dim_off">LED will be full brightness</string>
+    <string name="quiet_hours_led_notification">Notification LED</string>
+    <string name="quiet_hours_led_notification_on">Notification LED is disabled</string>
+    <string name="quiet_hours_led_notification_off">Notification LED is enabled</string>
+    <string name="quiet_hours_led_button">Buttons LED</string>
+    <string name="quiet_hours_led_button_on">Home, menu, search, and back button LEDs are disabled</string>
+    <string name="quiet_hours_led_button_off">Home, menu, search, and back button LEDs are enabled</string>
 
     <!-- System strings -->
     <string name="system_title">System settings</string>

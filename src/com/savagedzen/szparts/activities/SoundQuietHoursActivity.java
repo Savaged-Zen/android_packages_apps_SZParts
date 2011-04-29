@@ -40,32 +40,26 @@ public class SoundQuietHoursActivity extends PreferenceActivity implements
         OnPreferenceChangeListener {
 
     private static final int DIALOG_QUIET_HOURS_START = 1;
-
     private static final int DIALOG_QUIET_HOURS_END = 2;
 
     private static final String KEY_QUIET_HOURS_ENABLED = "quiet_hours_enabled";
-
     private static final String KEY_QUIET_HOURS_START = "quiet_hours_start";
-
     private static final String KEY_QUIET_HOURS_END = "quiet_hours_end";
-
     private static final String KEY_QUIET_HOURS_MUTE = "quiet_hours_mute";
-
     private static final String KEY_QUIET_HOURS_STILL = "quiet_hours_still";
-
     private static final String KEY_QUIET_HOURS_DIM = "quiet_hours_dim";
-
-    private CheckBoxPreference mQuietHoursEnabled;
+    private static final String KEY_QUIET_HOURS_LED_NOTIFICATION = "quiet_hours_led_notification";
+    private static final String KEY_QUIET_HOURS_LED_BUTTON = "quiet_hours_led_button";
 
     private Preference mQuietHoursStart;
-
     private Preference mQuietHoursEnd;
 
+    private CheckBoxPreference mQuietHoursEnabled;
     private CheckBoxPreference mQuietHoursMute;
-
     private CheckBoxPreference mQuietHoursStill;
-
     private CheckBoxPreference mQuietHoursDim;
+    private CheckBoxPreference mQuietHoursLedNotification;
+    private CheckBoxPreference mQuietHoursLedButton;
 
     private static String returnTime(String t) {
         if (t == null || t.equals("")) {
@@ -100,6 +94,8 @@ public class SoundQuietHoursActivity extends PreferenceActivity implements
         mQuietHoursMute = (CheckBoxPreference) findPreference(KEY_QUIET_HOURS_MUTE);
         mQuietHoursStill = (CheckBoxPreference) findPreference(KEY_QUIET_HOURS_STILL);
         mQuietHoursDim = (CheckBoxPreference) findPreference(KEY_QUIET_HOURS_DIM);
+        mQuietHoursLedNotification = (CheckBoxPreference) findPreference(KEY_QUIET_HOURS_LED_NOTIFICATION);
+        mQuietHoursLedButton = (CheckBoxPreference) findPreference(KEY_QUIET_HOURS_LED_BUTTON);
     }
 
     @Override
@@ -130,6 +126,14 @@ public class SoundQuietHoursActivity extends PreferenceActivity implements
             showDialog(DIALOG_QUIET_HOURS_END);
             mQuietHoursEnd.setSummary(returnTime(Settings.System.getString(getContentResolver(),
                     Settings.System.QUIET_HOURS_END)));
+            return true;
+        }  else if (preference == mQuietHoursLedNotification) {
+            Settings.System.putInt(getContentResolver(), Settings.System.QUIET_HOURS_LED_NOTIFICATION,
+                    mQuietHoursLedNotification.isChecked() ? 1 : 0);
+            return true;
+        }  else if (preference == mQuietHoursLedButton) {
+            Settings.System.putInt(getContentResolver(), Settings.System.QUIET_HOURS_LED_BUTTON,
+                    mQuietHoursLedButton.isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
