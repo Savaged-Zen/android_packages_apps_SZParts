@@ -5,14 +5,6 @@
        <PreferenceCategory android:key="general_category"
        android:title="@string/general_title">
 
-	<!-- Launcher App -->
-        <PreferenceScreen android:key="settings_launcher"
-                android:title="@string/settings_launcher"
-                android:summary="@string/settings_launcher_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.savagedzen.szparts"
-                    android:targetClass="com.savagedzen.szparts.activities.LauncherActivity" />
-        </PreferenceScreen>
        <!-- Notification Power Widget Settings -->
         <PreferenceScreen android:key="ui_power_widget_settings_menu"
            android:title="@string/title_expanded_widget"

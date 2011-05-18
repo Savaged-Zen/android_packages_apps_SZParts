@@ -32,12 +32,10 @@ import android.provider.Settings;
 
 public class UIActivity extends PreferenceActivity {
 
-    private static final String LAUNCHER_SCREEN = "settings_launcher";
     private static final String POWER_WIDGET_SCREEN = "ui_power_widget_settings_menu";
     private static final String USE_SCREENOFF_ANIM = "pref_use_screenoff_anim";
     private static final String USE_SCREENON_ANIM = "pref_use_screenon_anim";
 
-    private PreferenceScreen mLauncherScreen;
     private PreferenceScreen mPowerWidgetScreen;
 
     private CheckBoxPreference mUseScreenOnAnim;
@@ -55,7 +53,6 @@ public class UIActivity extends PreferenceActivity {
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mLauncherScreen = (PreferenceScreen) prefSet.findPreference(LAUNCHER_SCREEN);
         mPowerWidgetScreen = (PreferenceScreen) prefSet.findPreference(POWER_WIDGET_SCREEN);
 
         mUseScreenOnAnim = (CheckBoxPreference) prefSet.findPreference(USE_SCREENON_ANIM);
@@ -73,9 +70,6 @@ public class UIActivity extends PreferenceActivity {
 
         if (preference == mPowerWidgetScreen) {
             startActivity(mPowerWidgetScreen.getIntent());
-      	}
-        if (preference == mLauncherScreen) {
-            startActivity(mLauncherScreen.getIntent());
       	}
         if (preference == mUseScreenOnAnim) {
             value = mUseScreenOnAnim.isChecked();

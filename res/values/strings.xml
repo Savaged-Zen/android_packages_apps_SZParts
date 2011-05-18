@@ -11,28 +11,6 @@
     <string name="changelog_error">Error loading changelog...</string>
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
-    
-    <!-- Launcher -->
-    <string name="homescreen_elements">Home Screens</string>
-    <string name="homescreen_elements_about">Select number of home screens</string>
-    <string name="choose_num_screens">Choose the number of home screens</string>
-    <string name="three_screens">Three screens</string>
-    <string name="five_screens">Five screens</string>
-    <string name="seven_screens">Seven screens</string>
-    <string name="number_screens_title">Change the number of screens</string>
-    <string name="screen_changer_title">Screen number</string>
-    <string name="screen_changer_title_summary">Set the number of screens</string>
-    <string name="use_settings_title">Enable/Disable Settings</string>
-    <string name="mappings_title">Button Mappings</string>
-    <string name="tab_title_enable">Launcher mappings</string>
-    <string name="using_tabs_summary">Set left and right launcher tabs</string>
-    <string name="settings_launcher">Launcher Settings</string>
-    <string name="settings_launcher_summary">Customize your launcher</string>
-    <string name="select_farright_button">Select far right action button.</string>
-    <string name="title_general_use_stock_launcher">Use Stock Launcher</string>
-    <string name="summary_on_general_use_stock_launcher">Stock launcher will be used.</string>
-    <string name="summary_off_general_use_stock_launcher"> Custom Launcher will be used.</string>	
-    <string name="group_applications">Applications</string>
 	
     <!-- vddlevelshavs strings -->
     <string name="vddlevelshavs_title">Current HAVS Levels</string>
