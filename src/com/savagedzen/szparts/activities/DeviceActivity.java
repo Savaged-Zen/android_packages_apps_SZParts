@@ -35,13 +35,15 @@ public class DeviceActivity extends PreferenceActivity {
 
     private static final String TRACKBALL_WAKE_PREF = "pref_trackball_wake";
 
+    private static final String BUTTON_CATEGORY = "pref_category_button_settings";
+
     private CheckBoxPreference mTrackballWakePref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitle(R.string.input_settings_title_subhead);
+        setTitle(R.string.device_settings_title_subhead);
         addPreferencesFromResource(R.xml.device_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
@@ -50,6 +52,9 @@ public class DeviceActivity extends PreferenceActivity {
         mTrackballWakePref = (CheckBoxPreference) prefSet.findPreference(TRACKBALL_WAKE_PREF);
         mTrackballWakePref.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.TRACKBALL_WAKE_SCREEN, 1) == 1);
+
+        PreferenceCategory buttonCategory = (PreferenceCategory) prefSet
+                .findPreference(BUTTON_CATEGORY);
 
         if (!getResources().getBoolean(R.bool.has_trackball)) {
             buttonCategory.removePreference(mTrackballWakePref);
@@ -64,14 +69,9 @@ public class DeviceActivity extends PreferenceActivity {
             Settings.System.putInt(getContentResolver(), Settings.System.TRACKBALL_WAKE_SCREEN,
                     value ? 1 : 0);
             return true;
-        } else if (preference == mVolumeWakePref) {
-            value = mVolumeWakePref.isChecked();
-            Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_WAKE_SCREEN,
-                    value ? 1 : 0);
-            return true;
         }
 
         return false;
     }
-    @Override
+
 }
