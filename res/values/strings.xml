@@ -174,5 +174,15 @@
     <!-- System strings -->
     <string name="system_title">System settings</string>
     <string name="system_summary">Adjust specific system settings</string>
-    
+
+    <!-- Device strings -->
+    <string name="device_settings_title_head">Device</string>
+    <string name="device_settings_title_subhead">Device settings</string>
+    <string name="device_settings_summary_head">Device behavior, buttons</string>    
+
+    <!-- Trackpad Wake -->
+    <string name="pref_trackball_wake_title">Trackball wake</string>
+    <string name="pref_trackball_wake_summary">Pressing the trackball wakes the device</string>
+    <string name="pref_trackball_unlock_title">Trackball unlock</string>
+    <string name="pref_trackball_unlock_summary">Pressing the trackball unlocks the device</string>
 </resources>

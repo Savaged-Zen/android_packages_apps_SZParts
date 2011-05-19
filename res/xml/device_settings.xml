@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- General settings -->
+	<PreferenceCategory android:key="general_category"
+		android:title="@string/general_title">
+
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="@string/buttons_title"
+		android:key="pref_category_button_settings">
+
+		<CheckBoxPreference android:key="pref_trackball_wake"
+			android:title="@string/pref_trackball_wake_title" android:summary="@string/pref_trackball_wake_summary" />
+
+	</PreferenceCategory>
+
+</PreferenceScreen>
