@@ -3,6 +3,7 @@
     <!-- Generic -->
     <string name="app_name">Savaged-Zen settings</string>
     <string name="general_title">General</string>
+    <string name="buttons_title">Buttons</string>
 
     <!-- Change Log strings -->
     <string name="changelog_title">Changelog</string>
